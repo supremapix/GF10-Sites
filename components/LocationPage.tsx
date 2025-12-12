@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, CheckCircle, Zap, Globe, Smartphone, Search, MessageCircle, ChevronRight, Layout, Share2, X, Copy, Facebook, Linkedin, Twitter } from 'lucide-react';
+import { MapPin, CheckCircle, Zap, Globe, Smartphone, Search, MessageCircle, ChevronRight, Layout, Share2, X, Copy, Facebook, Linkedin, Twitter, Check } from 'lucide-react';
 
 const LocationPage: React.FC<{ type: 'bairro' | 'cidade' }> = ({ type }) => {
   const { name } = useParams<{ name: string }>();
@@ -16,6 +16,7 @@ const LocationPage: React.FC<{ type: 'bairro' | 'cidade' }> = ({ type }) => {
   });
 
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,17 +31,37 @@ const LocationPage: React.FC<{ type: 'bairro' | 'cidade' }> = ({ type }) => {
     window.open(`https://wa.me/5541992721004?text=${text}`, '_blank');
   };
 
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(window.location.href);
-    alert('Link copiado para a área de transferência!');
-  };
-
   // Content Generation Helper
   const locationType = type === 'bairro' ? 'no bairro' : 'na cidade de';
   const locationPreposition = type === 'bairro' ? 'em' : 'em';
 
   const shareUrl = window.location.href;
   const shareText = `Confira a Suprema Sites Express, especialista em criação de sites em ${decodedName}!`;
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `Suprema Sites - ${decodedName}`,
+          text: shareText,
+          url: shareUrl,
+        });
+      } catch (err) {
+        // User cancelled or error, fallback to modal if needed or ignore
+        if ((err as Error).name !== 'AbortError') {
+          setIsShareModalOpen(true);
+        }
+      }
+    } else {
+      setIsShareModalOpen(true);
+    }
+  };
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(shareUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <>
@@ -94,7 +115,7 @@ const LocationPage: React.FC<{ type: 'bairro' | 'cidade' }> = ({ type }) => {
                 animate={{ opacity: 1, scale: 1 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setIsShareModalOpen(true)}
+                onClick={handleShare}
                 className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary/10 border border-primary/20 hover:bg-primary/20 text-white transition-colors cursor-pointer"
               >
                 <Share2 className="w-4 h-4" />
@@ -377,7 +398,7 @@ const LocationPage: React.FC<{ type: 'bairro' | 'cidade' }> = ({ type }) => {
                   onClick={handleCopyLink}
                   className="absolute right-2 top-1/2 -translate-y-1/2 p-2 hover:bg-white/10 rounded-md transition-colors text-primary"
                 >
-                  <Copy size={16} />
+                  {copied ? <Check size={16} className="text-green-500" /> : <Copy size={16} />}
                 </button>
               </div>
             </motion.div>
