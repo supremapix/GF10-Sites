@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://supremasite.com.br/sitemap.xml
+
+# Block crawling of dev/staging paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /node_modules/

@@ -1,32 +1,12 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import Benefits from './components/Benefits';
-import Portfolio from './components/Portfolio';
-import Testimonials from './components/Testimonials';
-import SeoLocation from './components/SeoLocation';
-import CtaSection from './components/CtaSection';
 import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
 import CustomCursor from './components/CustomCursor';
 import LocationPage from './components/LocationPage';
 import Sitemap from './components/Sitemap';
-
-const HomePage: React.FC = () => (
-  <>
-    <Hero />
-    <About />
-    <Services />
-    <Benefits />
-    <Portfolio />
-    <Testimonials />
-    <SeoLocation />
-    <CtaSection />
-  </>
-);
+import HomePage from './components/HomePage';
 
 const App: React.FC = () => {
   const { pathname } = useLocation();

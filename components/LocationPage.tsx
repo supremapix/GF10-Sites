@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, CheckCircle, Zap, Globe, Smartphone, Search, MessageCircle, ChevronRight, Layout, Share2, X, Copy, Facebook, Linkedin, Twitter, Check } from 'lucide-react';
+import EnhancedSEO from './EnhancedSEO';
 
 const LocationPage: React.FC<{ type: 'bairro' | 'cidade' }> = ({ type }) => {
   const { name } = useParams<{ name: string }>();
@@ -63,36 +63,21 @@ const LocationPage: React.FC<{ type: 'bairro' | 'cidade' }> = ({ type }) => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const pageTitle = `Criação de Sites em ${decodedName} | Web Designer ${decodedName} - Suprema Sites`;
+  const pageDescription = `Empresa de Criação de Sites profissionais e Landing Pages em ${decodedName}. Desenvolvimento web otimizado para SEO, rápido e responsivo para empresas de ${decodedName}.`;
+  const pageKeywords = `criação de sites ${decodedName}, web designer ${decodedName}, sites profissionais ${decodedName}, landing page ${decodedName}, SEO ${decodedName}, desenvolvimento web ${decodedName}`;
+
   return (
     <>
-      <Helmet>
-        <title>Criação de Sites em {decodedName} | Web Designer {decodedName} - Suprema Sites</title>
-        <meta name="description" content={`Empresa de Criação de Sites profissionais e Landing Pages em ${decodedName}. Desenvolvimento web otimizado para SEO, rápido e responsivo para empresas de ${decodedName}.`} />
-        <link rel="canonical" href={`https://supremasite.com.br/${type}/${encodeURIComponent(decodedName)}`} />
-        
-        {/* Schema.org LocalBusiness */}
-        <script type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "name": "Suprema Sites Express - ${decodedName}",
-              "image": "https://supremasite.com.br/logo.png",
-              "telephone": "5541992721004",
-              "url": "https://supremasite.com.br/${type}/${encodeURIComponent(decodedName)}",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Curitiba",
-                "addressRegion": "PR",
-                "addressCountry": "BR"
-              },
-              "priceRange": "$$",
-              "areaServed": "${decodedName}",
-              "description": "Agência especializada em criação de sites e SEO Local atendendo ${decodedName}."
-            }
-          `}
-        </script>
-      </Helmet>
+      <EnhancedSEO
+        title={pageTitle}
+        description={pageDescription}
+        canonicalUrl={`/${type}/${encodeURIComponent(decodedName)}`}
+        type="local_business"
+        location={decodedName}
+        locationType={type}
+        keywords={pageKeywords}
+      />
 
       <div className="bg-darker min-h-screen pt-24 pb-12">
         {/* Header Section */}
