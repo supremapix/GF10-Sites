@@ -3,21 +3,13 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    host: '0.0.0.0',
+    port: 5000,
+    allowedHosts: ['all'],
+  },
   esbuild: {
     jsx: 'automatic',
     jsxImportSource: 'react'
-  },
-  build: {
-    rollupOptions: {
-      external: [
-        'react',
-        'react-dom',
-        'react-dom/client',
-        'react-router-dom',
-        'framer-motion',
-        'lucide-react',
-        'react-helmet-async'
-      ]
-    }
   }
 });
