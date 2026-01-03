@@ -136,9 +136,10 @@ const Portfolio: React.FC = () => {
             Portfólio Premium
           </motion.div>
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="text-3xl md:text-5xl font-bold mb-6"
           >
             Nossos Clientes e <span className="text-gradient">Projetos</span>
@@ -148,7 +149,7 @@ const Portfolio: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: 0.2 }}
             className="text-gray-400 text-lg leading-relaxed max-w-2xl mx-auto"
           >
             Conheça os clientes que confiaram na Suprema Sites Express para transformar sua presença digital.

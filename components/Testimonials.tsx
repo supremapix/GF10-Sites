@@ -45,8 +45,24 @@ const Testimonials: React.FC = () => {
   return (
     <section id="depoimentos" className="py-24 bg-dark overflow-hidden relative">
       <div className="container mx-auto px-4 mb-12 text-center">
-        <h2 className="text-3xl md:text-5xl font-bold mb-4">Clientes Satisfeitos</h2>
-        <p className="text-gray-400">Veja porque nossos clientes recomendam nossos serviços.</p>
+        <motion.h2 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-5xl font-bold mb-4"
+        >
+          Clientes Satisfeitos
+        </motion.h2>
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-gray-400"
+        >
+          Veja porque nossos clientes recomendam nossos serviços.
+        </motion.p>
       </div>
 
       <div className="relative w-full">

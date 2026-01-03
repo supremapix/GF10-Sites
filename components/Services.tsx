@@ -54,9 +54,10 @@ const Services: React.FC = () => {
             Nossas Soluções
           </motion.span>
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="text-3xl md:text-5xl font-bold mb-6"
           >
             O que fazemos de <span className="text-gradient">melhor</span>
@@ -65,7 +66,7 @@ const Services: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
             className="text-gray-400 text-lg"
           >
             Desenvolvemos estratégias digitais completas. Arraste para o lado e conheça nossos serviços.
@@ -89,10 +90,10 @@ const Services: React.FC = () => {
             <motion.div
               key={index}
               className="group min-w-[320px] md:min-w-[380px] h-[400px] glass-card rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden transition-all hover:-translate-y-4 duration-500"
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               

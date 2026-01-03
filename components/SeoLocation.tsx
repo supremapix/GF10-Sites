@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { MapPin, Navigation } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { NEIGHBORHOODS, CITIES } from '../constants';
 
 const SeoLocation: React.FC = () => {
@@ -39,22 +40,45 @@ const SeoLocation: React.FC = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-12">
-          <div className="inline-flex items-center gap-2 justify-center mb-6 px-4 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 justify-center mb-6 px-4 py-1 rounded-full bg-primary/10 text-primary border border-primary/20"
+          >
             <MapPin size={16} className="animate-pulse" />
             <span className="uppercase tracking-widest text-xs font-bold">Atendimento Regional</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-4xl font-bold mb-6"
+          >
             Líder em Criação de Sites em <span className="text-white">Curitiba</span> e Região
-          </h2>
-          <p className="text-gray-400 leading-relaxed text-lg">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-gray-400 leading-relaxed text-lg"
+          >
             A Suprema Sites Express é especialista em desenvolvimento web focado em SEO Local. 
             Ajudamos empresas a dominarem as buscas do Google em sua região.
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Neighborhoods Column */}
-          <div className="glass-card p-8 rounded-2xl hover:bg-white/5 transition-colors flex flex-col h-[400px]">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="glass-card p-8 rounded-2xl hover:bg-white/5 transition-colors flex flex-col h-[400px]"
+          >
             <div className="flex items-center gap-3 mb-6 shrink-0">
               <div className="p-3 bg-secondary/10 rounded-lg text-secondary">
                 <Navigation size={24} />
@@ -79,10 +103,16 @@ const SeoLocation: React.FC = () => {
             <div className="mt-4 pt-4 border-t border-white/10 text-center shrink-0">
                <Link to="/sitemap" className="text-sm text-primary hover:text-white transition-colors font-medium">Ver lista completa</Link>
             </div>
-          </div>
+          </motion.div>
 
           {/* Cities Column */}
-          <div className="glass-card p-8 rounded-2xl hover:bg-white/5 transition-colors flex flex-col h-[400px]">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="glass-card p-8 rounded-2xl hover:bg-white/5 transition-colors flex flex-col h-[400px]"
+          >
             <div className="flex items-center gap-3 mb-6 shrink-0">
               <div className="p-3 bg-primary/10 rounded-lg text-primary">
                 <MapPin size={24} />
@@ -107,7 +137,7 @@ const SeoLocation: React.FC = () => {
             <div className="mt-4 pt-4 border-t border-white/10 text-center shrink-0">
                <Link to="/sitemap" className="text-sm text-primary hover:text-white transition-colors font-medium">Ver lista completa</Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

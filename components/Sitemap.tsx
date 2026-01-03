@@ -1,18 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { NEIGHBORHOODS, CITIES } from '../constants';
 import { Map, MapPin } from 'lucide-react';
-import EnhancedSEO from './EnhancedSEO';
 
 const Sitemap: React.FC = () => {
   return (
     <>
-      <EnhancedSEO
-        title="Mapa do Site - Áreas de Atendimento | Suprema Sites Express"
-        description="Lista completa de bairros de Curitiba e cidades da Região Metropolitana atendidas pela Suprema Sites Express. Confira todas as localidades onde oferecemos criação de sites profissionais."
-        canonicalUrl="/sitemap"
-        keywords="criação de sites curitiba, web design região metropolitana, bairros curitiba, cidades RMC"
-      />
+      <Helmet>
+        <title>Mapa do Site - Áreas de Atendimento | Suprema Sites Express</title>
+        <meta name="description" content="Lista completa de bairros de Curitiba e cidades da Região Metropolitana atendidas pela Suprema Sites Express." />
+        <link rel="canonical" href="https://supremasite.com.br/sitemap" />
+      </Helmet>
 
       <section className="pt-32 pb-24 bg-dark min-h-screen">
         <div className="container mx-auto px-4">

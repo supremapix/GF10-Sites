@@ -18,13 +18,32 @@ const Benefits: React.FC = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 max-w-3xl mx-auto">
-          <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Vantagens Competitivas</span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+          <motion.span 
+             initial={{ opacity: 0, y: 10 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block"
+          >
+            Vantagens Competitivas
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl md:text-5xl font-bold mb-6 leading-tight"
+          >
             Por que escolher a <span className="text-gradient">Suprema Sites</span>?
-          </h2>
-          <p className="text-gray-400 text-lg">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-gray-400 text-lg"
+          >
             Combinamos tecnologia de ponta com estratégias de marketing para entregar não apenas um site, mas uma máquina de vendas.
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
