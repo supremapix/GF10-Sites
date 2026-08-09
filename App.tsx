@@ -11,7 +11,7 @@ import FaqSection from './components/FaqSection';
 import SeoLocation from './components/SeoLocation';
 import CtaSection from './components/CtaSection';
 import Footer from './components/Footer';
-import FloatingButtons from './components/FloatingButtons';
+import FloatingActions from './components/FloatingActions';
 import CustomCursor from './components/CustomCursor';
 import LocationPage from './components/LocationPage';
 import CuritibaPage from './components/CuritibaPage';
@@ -73,7 +73,7 @@ const App: React.FC = () => {
       </Routes>
 
       <Footer />
-      <FloatingButtons />
+      <FloatingActions />
     </div>
   );
 };
