@@ -10,6 +10,7 @@ import Testimonials from './components/Testimonials';
 import FaqSection from './components/FaqSection';
 import SeoLocation from './components/SeoLocation';
 import CtaSection from './components/CtaSection';
+import PreFooterBanner from './components/PreFooterBanner';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
 import CustomCursor from './components/CustomCursor';
@@ -72,6 +73,7 @@ const App: React.FC = () => {
         <Route path="/cidade/:name" element={<LocationPage type="cidade" />} />
       </Routes>
 
+      <PreFooterBanner />
       <Footer />
       <FloatingActions />
     </div>
