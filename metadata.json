@@ -1,5 +1,6 @@
 {
-  "name": "Suprema Sites Curitiba",
-  "description": "Landing Page para criação de sites e landing pages em Curitiba e Região.",
-  "requestFramePermissions": []
+  "name": "GF10 - Criação de Sites em Curitiba",
+  "description": "Desenvolvimento de sites profissionais, landing pages de alta conversão e SEO Local em Curitiba, Portão, Batel, Rebouças, CIC e RMC.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

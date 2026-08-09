@@ -1,0 +1,25 @@
+# Robots.txt for GF10 / Suprema Sites Express
+# https://www.gf10.com.br/
+
+User-agent: *
+Allow: /
+
+# Disallow private or non-public paths
+Disallow: /api/
+Disallow: /*?*
+
+# LLM & AI Crawlers explicit permission
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Sitemap URL
+Sitemap: https://www.gf10.com.br/sitemap.xml

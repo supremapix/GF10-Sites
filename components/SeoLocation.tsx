@@ -56,18 +56,37 @@ const SeoLocation: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-3xl md:text-4xl font-bold mb-6"
           >
-            Líder em Criação de Sites em <span className="text-white">Curitiba</span> e Região
+            Líder em <Link to="/criacao-de-sites-curitiba" className="text-secondary hover:underline">Criação de Sites em Curitiba</Link> e Região
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-gray-400 leading-relaxed text-lg"
+            className="text-gray-400 leading-relaxed text-lg mb-8"
           >
-            A Suprema Sites Express é especialista em desenvolvimento web focado em SEO Local. 
-            Ajudamos empresas a dominarem as buscas do Google em sua região.
+            A GF10 / Suprema Sites Express é especialista em desenvolvimento web focado em SEO Local. 
+            Ajudamos empresas a dominarem as buscas do Google no <strong>Portão, Batel, Rebouças, CIC</strong> e em toda a região.
           </motion.p>
+
+          {/* Priority Neighborhoods Spotlight */}
+          <div className="flex flex-wrap justify-center gap-3 mb-10">
+            <Link
+              to="/criacao-de-sites-curitiba"
+              className="px-5 py-2.5 rounded-full bg-primary/20 text-white font-bold text-sm border border-primary/40 hover:bg-primary/30 transition-all shadow-lg"
+            >
+              Criação de Sites Curitiba
+            </Link>
+            {["Portão", "Batel", "Rebouças", "CIC"].map((pName) => (
+              <Link
+                key={pName}
+                to={`/bairro/${encodeURIComponent(pName)}`}
+                className="px-4 py-2 rounded-full bg-white/5 text-gray-200 font-semibold text-sm border border-white/10 hover:border-secondary hover:text-secondary hover:bg-secondary/10 transition-all"
+              >
+                Bairro {pName}
+              </Link>
+            ))}
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">

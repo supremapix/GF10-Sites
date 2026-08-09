@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heart, Instagram, Facebook, Linkedin } from 'lucide-react';
 import { CONTACT_INFO } from '../constants';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -26,10 +27,10 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-bold mb-4">Links Rápidos</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="/" className="hover:text-secondary transition-colors">Início</a></li>
-              <li><a href="/#servicos" className="hover:text-secondary transition-colors">Serviços</a></li>
-              <li><a href="/#portfolio" className="hover:text-secondary transition-colors">Portfólio</a></li>
-              <li><a href="/sitemap" className="hover:text-secondary transition-colors">Mapa do Site</a></li>
+              <li><Link to="/" className="hover:text-secondary transition-colors">Início</Link></li>
+              <li><Link to="/#servicos" className="hover:text-secondary transition-colors">Serviços</Link></li>
+              <li><Link to="/#portfolio" className="hover:text-secondary transition-colors">Portfólio</Link></li>
+              <li><Link to="/sitemap" className="hover:text-secondary transition-colors">Mapa do Site</Link></li>
             </ul>
           </div>
 

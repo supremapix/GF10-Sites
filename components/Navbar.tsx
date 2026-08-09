@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 
 const RocketIcon = () => {
   return (
@@ -53,6 +54,8 @@ const RocketIcon = () => {
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,13 +66,37 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Início', href: '#home' },
-    { name: 'Serviços', href: '#servicos' },
-    { name: 'Portfólio', href: '#portfolio' },
-    { name: 'Clientes', href: '#depoimentos' }, // Mapping Clientes to Depoimentos as per context
-    { name: 'Depoimentos', href: '#depoimentos' },
-    { name: 'Contato', href: '#contato' },
+    { name: 'Início', href: '#home', isExternal: false },
+    { name: 'Curitiba', href: '/criacao-de-sites-curitiba', isExternal: true },
+    { name: 'Serviços', href: '#servicos', isExternal: false },
+    { name: 'Portfólio', href: '#portfolio', isExternal: false },
+    { name: 'Clientes', href: '#depoimentos', isExternal: false },
+    { name: 'Contato', href: '#contato', isExternal: false },
   ];
+
+  const handleNavClick = (e: React.MouseEvent, link: { name: string; href: string; isExternal?: boolean }) => {
+    if (link.isExternal) {
+      setIsMobileMenuOpen(false);
+      return; // Standard React Router Link will handle navigation
+    }
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+
+    if (location.pathname === '/') {
+      // If on home, smooth scroll
+      const id = link.href.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        // Fallback if element not found immediately (rare on home)
+        navigate('/' + link.href);
+      }
+    } else {
+      // If on another page, navigate to home + hash
+      navigate('/' + link.href);
+    }
+  };
 
   return (
     <nav
@@ -81,7 +108,7 @@ const Navbar: React.FC = () => {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 group relative z-50">
+        <Link to="/" className="flex items-center gap-3 group relative z-50">
           <RocketIcon />
           <div className={`flex flex-col leading-none transition-all duration-500 origin-left ${isScrolled ? 'scale-90' : 'scale-100'}`}>
             <span className="text-2xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500 group-hover:to-blue-300 transition-all drop-shadow-sm">
@@ -91,27 +118,39 @@ const Navbar: React.FC = () => {
               Sites
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="relative text-sm font-medium text-gray-300 hover:text-white transition-colors py-2 px-1 group overflow-hidden"
-            >
-              <span className="relative z-10">{link.name}</span>
-              {/* Animated Underline */}
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out" />
-            </a>
+            link.isExternal ? (
+              <Link
+                key={link.name}
+                to={link.href}
+                className="relative text-sm font-medium text-gray-300 hover:text-white transition-colors py-2 px-1 group overflow-hidden cursor-pointer"
+              >
+                <span className="relative z-10">{link.name}</span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out" />
+              </Link>
+            ) : (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link)}
+                className="relative text-sm font-medium text-gray-300 hover:text-white transition-colors py-2 px-1 group overflow-hidden cursor-pointer"
+              >
+                <span className="relative z-10">{link.name}</span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-500 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out" />
+              </a>
+            )
           ))}
           
           <motion.a
             href="#contato"
+            onClick={(e) => handleNavClick(e, { name: 'Contato', href: '#contato' })}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="relative px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-sm shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] border border-white/10 transition-all overflow-hidden group"
+            className="relative px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-sm shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] border border-white/10 transition-all overflow-hidden group cursor-pointer"
           >
             <span className="relative z-10 flex items-center gap-2">
               Orçamento
@@ -146,23 +185,35 @@ const Navbar: React.FC = () => {
           >
             <div className="flex flex-col space-y-6">
               {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-2xl font-medium text-gray-300 hover:text-blue-400 transition-all border-b border-white/5 pb-4 flex justify-between items-center group"
-                >
-                  {link.name}
-                  <span className="opacity-0 group-hover:opacity-100 text-blue-500 transition-opacity">→</span>
-                </motion.a>
+                link.isExternal ? (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-2xl font-medium text-gray-300 hover:text-blue-400 transition-all border-b border-white/5 pb-4 flex justify-between items-center group cursor-pointer"
+                  >
+                    {link.name}
+                    <span className="opacity-0 group-hover:opacity-100 text-blue-500 transition-opacity">→</span>
+                  </Link>
+                ) : (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => handleNavClick(e, link)}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    className="text-2xl font-medium text-gray-300 hover:text-blue-400 transition-all border-b border-white/5 pb-4 flex justify-between items-center group cursor-pointer"
+                  >
+                    {link.name}
+                    <span className="opacity-0 group-hover:opacity-100 text-blue-500 transition-opacity">→</span>
+                  </motion.a>
+                )
               ))}
               <motion.a 
                 href="#contato"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="w-full text-center py-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl text-white font-bold text-lg shadow-lg mt-8"
+                onClick={(e) => handleNavClick(e, { name: 'Contato', href: '#contato' })}
+                className="w-full text-center py-4 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl text-white font-bold text-lg shadow-lg mt-8 cursor-pointer"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}

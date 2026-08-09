@@ -6,18 +6,5 @@ export default defineConfig({
   esbuild: {
     jsx: 'automatic',
     jsxImportSource: 'react'
-  },
-  build: {
-    rollupOptions: {
-      external: [
-        'react',
-        'react-dom',
-        'react-dom/client',
-        'react-router-dom',
-        'framer-motion',
-        'lucide-react',
-        'react-helmet-async'
-      ]
-    }
   }
 });

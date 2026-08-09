@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue } from 'framer-motion';
 import { ArrowRight, Zap, ChevronDown, Code, Smartphone, Rocket } from 'lucide-react';
 import { CONTACT_INFO } from '../constants';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-const MagneticButton: React.FC<{ children: React.ReactNode; className?: string; href?: string }> = ({ children, className, href }) => {
+const MagneticButton: React.FC<{ children: React.ReactNode; className?: string; href?: string; onClick?: (e: React.MouseEvent) => void }> = ({ children, className, href, onClick }) => {
   const ref = useRef<HTMLAnchorElement>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -26,6 +27,7 @@ const MagneticButton: React.FC<{ children: React.ReactNode; className?: string; 
     <motion.a
       ref={ref}
       href={href}
+      onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ x, y }}
@@ -69,6 +71,8 @@ const FloatingElement: React.FC<{ children: React.ReactNode; depth: number; clas
 const Hero: React.FC = () => {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const navigate = useNavigate();
+  const location = useLocation();
   
   // Title Animation Variants
   const container = {
@@ -98,6 +102,15 @@ const Hero: React.FC = () => {
         stiffness: 100,
       },
     },
+  };
+
+  const handlePortfolioClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (location.pathname === '/') {
+      document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate('/#portfolio');
+    }
   };
 
   const titleText = "Criação de Sites e Landing Pages Profissionais";
@@ -182,7 +195,7 @@ const Hero: React.FC = () => {
           >
             <MagneticButton
               href={CONTACT_INFO.whatsappBudget}
-              className="group relative px-8 py-4 bg-secondary text-darker font-bold text-lg rounded-full overflow-hidden shadow-[0_0_40px_rgba(16,185,129,0.3)] w-full sm:w-auto flex justify-center items-center"
+              className="group relative px-8 py-4 bg-secondary text-darker font-bold text-lg rounded-full overflow-hidden shadow-[0_0_40px_rgba(16,185,129,0.3)] w-full sm:w-auto flex justify-center items-center cursor-pointer"
             >
               <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
               <span className="relative flex items-center gap-2">
@@ -193,7 +206,8 @@ const Hero: React.FC = () => {
             
             <MagneticButton
               href="#portfolio"
-              className="group px-8 py-4 bg-white/5 text-white font-semibold text-lg rounded-full border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all w-full sm:w-auto flex items-center justify-center gap-2 backdrop-blur-sm"
+              onClick={handlePortfolioClick}
+              className="group px-8 py-4 bg-white/5 text-white font-semibold text-lg rounded-full border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all w-full sm:w-auto flex items-center justify-center gap-2 backdrop-blur-sm cursor-pointer"
             >
               Ver Portfólio
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
