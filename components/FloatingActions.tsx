@@ -234,9 +234,9 @@ const FloatingActions: React.FC = () => {
                 href={shareLinks.threads}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col items-center justify-center p-2.5 rounded-xl bg-purple-500/10 border border-purple-500/30 hover:bg-purple-500/25 hover:border-purple-400 transition-all group cursor-pointer"
+                className="flex flex-col items-center justify-center p-2.5 rounded-xl bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all group cursor-pointer"
               >
-                <svg className="w-6 h-6 fill-purple-300 group-hover:scale-110 transition-transform mb-1" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 fill-white group-hover:scale-110 transition-transform mb-1" viewBox="0 0 24 24">
                   <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 13.197c-.126 2.378-1.523 4.156-3.832 4.156-1.76 0-3.083-1.071-3.32-2.716h-.066c-.66 1.636-2.073 2.716-3.827 2.716-2.185 0-3.722-1.635-3.722-3.83 0-2.615 2.128-4.321 5.388-4.321h2.147v-.363c0-1.32-.825-2.012-2.211-2.012-1.122 0-2.145.429-2.838 1.155l-1.056-1.155c1.089-1.089 2.574-1.683 4.125-1.683 2.607 0 4.18 1.485 4.18 3.861v3.828c0 .825.33 1.188 1.089 1.188.759 0 1.353-.627 1.452-1.782h1.586zm-5.775.132v-1.386h-1.947c-1.848 0-2.871.858-2.871 2.211 0 1.122.759 1.881 1.848 1.881 1.584 0 2.97-1.122 2.97-2.706z"/>
                 </svg>
                 <span className="text-[11px] font-semibold text-gray-200">Threads</span>
