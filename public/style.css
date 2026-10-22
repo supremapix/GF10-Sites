@@ -1319,3 +1319,16 @@ body:has(#share-dialog[open]) {
     transition: none;
   }
 }
+
+.territory-list {list-style:none; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr)); gap:8px 24px;}
+.territory-list li {border-bottom:1px solid #bac4d0; padding:12px 0; overflow-wrap:anywhere;}
+.territory-list li[hidden] {display:none;}
+.territory-list a {display:flex; align-items:center; justify-content:space-between; min-height:48px; gap:12px;}
+.territory-filter {margin:24px 0;}
+.territory-filter label {display:block; font-weight:700; margin-bottom:8px;}
+.territory-filter input {font:inherit; min-height:52px; padding:10px 14px; border:2px solid #34465d; border-radius:4px; width:min(100%,480px); background:white; color:#020617;}
+.territory-map {margin:0; max-width:440px;}
+.territory-map svg {display:block; width:100%; background:#fff; border:1px solid #bac4d0;}
+.territory-map figcaption {font-size:0.9rem; margin-top:12px;}
+.section dl dt {font-weight:700; margin-top:16px;}
+.section dl dd {margin:4px 0 12px;}

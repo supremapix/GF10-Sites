@@ -1,4 +1,14 @@
 import React from "react";
+import {
+  CapitalDirectory,
+  CuritibaDirectory,
+  CapitalPage,
+  NeighborhoodPage,
+  capitals,
+  neighborhoods,
+  capitalPath,
+  neighborhoodPath,
+} from "./components/Territory";
 import FloatingActions from "./components/FloatingActions";
 import { regions, districts, slug } from "./data/coverage";
 import { services, guides, type Editorial } from "./data/editorial";
@@ -9,8 +19,26 @@ export type Page = {
   description: string;
   kind: string;
   key?: string;
+  noindex?: boolean;
 };
 export const pages: Page[] = [
+  ...capitals
+    .filter((c) => c.name !== "Curitiba")
+    .map((c) => ({
+      path: capitalPath(c.name),
+      title: `Sites em ${c.name}: planejamento e cobertura | GF10`,
+      description: `${c.brief} Conheça a referência territorial e planeje seu projeto com atendimento remoto da GF10.`,
+      kind: "capital",
+      key: c.key,
+    })),
+  ...neighborhoods.map((n) => ({
+    path: neighborhoodPath(n.slug),
+    title: `${n.name}, Curitiba: referência territorial | GF10`,
+    description: `Consulte o recorte de ${n.name} no IBGE, a organização regional de Curitiba e orientações para definir a cobertura real da sua empresa.`,
+    kind: "neighborhood",
+    key: n.slug,
+    noindex: true,
+  })),
   {
     path: "/",
     title: "Criação de sites em Curitiba e no Brasil | GF10",
@@ -135,7 +163,7 @@ function Header({ page }: { page: Page }) {
         Pular para o conteúdo
       </a>
       <header className="header wrap">
-        <a className="brand" href="/" aria-label="GF10 — início">
+        <a className="brand" href="/">
           <img src="/favicon.svg" width="42" height="42" alt="" />
           <span>
             GF10<small>SUPREMA SITES EXPRESS</small>
@@ -164,7 +192,7 @@ function Header({ page }: { page: Page }) {
 function Footer({ page }: { page: Page }) {
   return (
     <>
-      <section className="closing wrap" id="contato">
+      <section className="closing wrap" id="contato" aria-label="Contato pelo WhatsApp">
         <p className="eyebrow">O próximo passo é uma conversa</p>
         <h2>
           O que seu site
@@ -510,7 +538,7 @@ function Curitiba() {
               <ul className="neighborhoods">
                 {d.names.split("|").map((n) => (
                   <li key={n} id={slug(n)}>
-                    {n}
+                    <a href={neighborhoodPath(slug(n))}>{n}</a>
                     {n === "Campo Comprido"
                       ? ` (${d.name === "Santa Felicidade" ? "Norte" : "Sul"})`
                       : ""}
@@ -537,8 +565,8 @@ function Curitiba() {
           </p>
           <p>
             Uma página separada por bairro só faz sentido quando há conteúdo
-            próprio para aquele contexto. Este guia reúne os bairros para evitar
-            dezenas de páginas equivalentes.
+            próprio para aquele contexto. Este guia reúne fichas territoriais de
+            consulta, com limites e fontes, separadas das páginas comerciais.
           </p>
         </div>
         <aside className="note">
@@ -668,7 +696,9 @@ function Region({ keyName }: { keyName: string }) {
         {r.cities.map((c) => (
           <article id={slug(c[0])} key={c[0]}>
             <p className="eyebrow">{c[1]} / Atendimento remoto</p>
-            <h2>{c[0]}</h2>
+            <h2>
+              <a href={capitalPath(c[0])}>{c[0]}</a>
+            </h2>
             <p>{c[2]}</p>
             {c[0] === "Curitiba" ? (
               <p>
@@ -786,6 +816,12 @@ function EditorialPage({
 export default function App({ page }: { page: Page }) {
   let body;
   switch (page.kind) {
+    case "capital":
+      body = <CapitalPage cityKey={page.key!} />;
+      break;
+    case "neighborhood":
+      body = <NeighborhoodPage placeKey={page.key!} />;
+      break;
     case "home":
       body = <Home />;
       break;
@@ -892,9 +928,17 @@ export default function App({ page }: { page: Page }) {
           </div>
         )}
         {body}
-        {["home", "service", "curitiba", "region", "brasil"].includes(
-          page.kind,
-        ) && (
+        {page.kind === "curitiba" && <CuritibaDirectory />}
+        {page.kind === "brasil" && <CapitalDirectory />}
+        {[
+          "home",
+          "service",
+          "curitiba",
+          "region",
+          "brasil",
+          "capital",
+          "neighborhood",
+        ].includes(page.kind) && (
           <Journey
             context={
               page.kind === "region"
@@ -907,9 +951,9 @@ export default function App({ page }: { page: Page }) {
             }
           />
         )}
-        {["curitiba", "region", "brasil"].includes(page.kind) && (
-          <LocalArt page={page} />
-        )}
+        {["curitiba", "region", "brasil", "capital", "neighborhood"].includes(
+          page.kind,
+        ) && <LocalArt page={page} />}
       </main>
       <Footer page={page} />
       <FloatingActions title={page.title} />
@@ -918,13 +962,19 @@ export default function App({ page }: { page: Page }) {
 }
 
 function LocalArt({ page }: { page: Page }) {
-  const key = page.kind === "region" ? page.key! : page.kind;
+  const key = ["region", "capital", "neighborhood"].includes(page.kind)
+    ? page.key!
+    : page.kind;
   const label =
-    page.kind === "region"
-      ? regions.find((r) => r.key === key)!.name
-      : page.kind === "curitiba"
-        ? "Curitiba"
-        : "Brasil";
+    page.kind === "capital"
+      ? capitals.find((c) => c.key === key)!.name
+      : page.kind === "neighborhood"
+        ? neighborhoods.find((n) => n.slug === key)!.name
+        : page.kind === "region"
+          ? regions.find((r) => r.key === key)!.name
+          : page.kind === "curitiba"
+            ? "Curitiba"
+            : "Brasil";
   return (
     <section className="wrap local-art">
       <a href={whatsapp(`projeto em ${label}`)}>

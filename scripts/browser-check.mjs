@@ -42,11 +42,13 @@ try {
     );
     await page.keyboard.press("Enter");
     results.push(
-      `${width}px: 24 routes without horizontal overflow; keyboard skip link works with JS disabled`,
+      `${width}px: ${routes.filter((r) => r.kind !== "404").length} routes without horizontal overflow; keyboard skip link works with JS disabled`,
     );
     await page.close();
   }
-  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const context = await browser.newContext({
+    viewport: { width: 390, height: 844 },
+  });
   const page = await context.newPage();
   for (const path of [
     "/",

@@ -92,6 +92,24 @@
     new ResizeObserver(reserve).observe(dock);
 })();
 (() => {
+  const directory = document.querySelector('.territory-directory');
+  if (!directory) return;
+  const input = directory.querySelector('input[type="search"]');
+  if (!input) return;
+  const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR').trim();
+  const items = [...directory.querySelectorAll('[data-place]')];
+  directory.querySelector('.territory-filter').hidden = false;
+  input.addEventListener('input', () => {
+    const term = normalize(input.value);
+    let visible = 0;
+    items.forEach(item => {
+      item.hidden = !normalize(item.dataset.place).includes(term);
+      if (!item.hidden) visible++;
+    });
+    directory.querySelector('[data-filter-status]').textContent = `${visible} de ${items.length} localidades encontradas.`;
+  });
+})();
+(() => {
   const section = document.querySelector(".journey");
   if (!section) return;
   const steps = [...section.querySelectorAll(".journey-steps li")];

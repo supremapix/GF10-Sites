@@ -5,7 +5,17 @@ const mark = await sharp(await readFile("public/favicon.svg"))
   .resize(40, 40)
   .png()
   .toBuffer();
+const territory = JSON.parse(await readFile("data/territory.json", "utf8"));
+const { createServer } = await import("vite");
+const vite = await createServer({
+  server: { middlewareMode: true },
+  appType: "custom",
+});
+const { capitals } = await vite.ssrLoadModule("/components/Territory.tsx");
+await vite.close();
 const places = [
+  ...capitals.filter((c) => c.key !== "curitiba").map((c) => [c.key, c.name]),
+  ...territory.curitiba.map((n) => [n.slug, n.name]),
   ["curitiba", "Curitiba"],
   ["brasil", "Brasil"],
   ["sul", "Sul"],
@@ -16,7 +26,7 @@ const places = [
 ];
 for (const [key, label] of places) {
   const svg = Buffer.from(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="250" height="250"><rect width="250" height="250" fill="#020617"/><text x="64" y="44" fill="white" font-family="Arial" font-size="30" font-weight="700">GF10</text><path d="M18 70H232" stroke="#65738b"/><text x="18" y="102" fill="#75a4ff" font-family="Arial" font-size="25" font-weight="700">${label}</text><text x="18" y="125" fill="#dce3ee" font-family="Arial" font-size="12">ATENDIMENTO REMOTO</text><text x="18" y="154" fill="white" font-family="Arial" font-size="16" font-weight="700">Sites · Lojas · Aplicações</text><text x="18" y="174" fill="#dce3ee" font-family="Arial" font-size="12">Idiomas · Manutenção · SEO</text><rect x="0" y="190" width="250" height="60" fill="#10b981"/><text x="18" y="210" fill="#020617" font-family="Arial" font-size="12" font-weight="700">WHATSAPP</text><text x="18" y="236" fill="#020617" font-family="Arial" font-size="23" font-weight="700">(41) 99272-1004</text></svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" width="250" height="250"><rect width="250" height="250" fill="#020617"/><text x="64" y="44" fill="white" font-family="Arial" font-size="30" font-weight="700">GF10</text><path d="M18 70H232" stroke="#65738b"/><text x="18" y="102" fill="#75a4ff" font-family="Arial" font-size="${label.length > 21 ? 14 : label.length > 16 ? 18 : 25}" font-weight="700">${label.replaceAll("&", "&amp;")}</text><text x="18" y="125" fill="#dce3ee" font-family="Arial" font-size="12">ATENDIMENTO REMOTO</text><text x="18" y="154" fill="white" font-family="Arial" font-size="16" font-weight="700">Sites · Lojas · Aplicações</text><text x="18" y="174" fill="#dce3ee" font-family="Arial" font-size="12">Idiomas · Manutenção · SEO</text><rect x="0" y="190" width="250" height="60" fill="#10b981"/><text x="18" y="210" fill="#020617" font-family="Arial" font-size="12" font-weight="700">WHATSAPP</text><text x="18" y="236" fill="#020617" font-family="Arial" font-size="23" font-weight="700">(41) 99272-1004</text></svg>`,
   );
   await sharp(svg)
     .composite([{ input: mark, left: 18, top: 16 }])

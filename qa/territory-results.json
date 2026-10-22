@@ -1,0 +1,13 @@
+{
+  "base": "http://127.0.0.1:4173",
+  "checked": [
+    "/criacao-de-sites-brasil",
+    "/brasil/capitais/belo-horizonte",
+    "/brasil/capitais/brasilia",
+    "/brasil/curitiba/bairros/campo-comprido",
+    "/brasil/curitiba/bairros/cidade-industrial"
+  ],
+  "axeViolations": 0,
+  "filter": "accent insensitive, empty state and reset passed",
+  "unknown": 404
+}

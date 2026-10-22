@@ -103,7 +103,23 @@ for (const [path, $] of documents) {
   }
 }
 const sitemap = load(await readFile("dist/sitemap.xml", "utf8"), { xml: true });
-assert.equal(sitemap("url").length, 24);
+assert.equal(
+  sitemap("url").length,
+  routes.filter((r) => r.kind !== "404" && !r.noindex).length,
+);
+for (const r of routes.filter((r) => r.noindex)) {
+  assert(
+    documents
+      .get(r.path)("meta[name=robots]")
+      .attr("content")
+      .includes("noindex"),
+  );
+  assert(
+    !sitemap("loc")
+      .toArray()
+      .some((l) => sitemap(l).text().endsWith(r.path)),
+  );
+}
 for (const loc of sitemap("loc").toArray()) {
   assert(documents.has(new URL(sitemap(loc).text()).pathname));
 }
@@ -131,5 +147,5 @@ const cities = [...documents]
   .reduce((sum, [, _$]) => sum + _$(".city-list article").length, 0);
 assert.equal(cities, 27);
 console.log(
-  `PASS: ${routes.length} HTML pages, ${links} links, ${whatsapps} contextual WhatsApp links, 24 sitemap entries, 27 capitals, 75 unique neighborhoods, OG and favicon dimensions.`,
+  `PASS: ${routes.length} HTML pages, ${links} links, ${whatsapps} contextual WhatsApp links, ${sitemap("url").length} sitemap entries, 27 capitals, 75 unique neighborhoods, OG and favicon dimensions.`,
 );
