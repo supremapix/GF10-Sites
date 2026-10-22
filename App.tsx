@@ -1,4 +1,5 @@
 import React from "react";
+import FloatingActions from "./components/FloatingActions";
 import { regions, districts, slug } from "./data/coverage";
 import { services, guides, type Editorial } from "./data/editorial";
 import { whatsapp, DISPLAY_WHATSAPP } from "./data/site";
@@ -806,6 +807,15 @@ export default function App({ page }: { page: Page }) {
             intro="Sites, lojas e aplicações com entregáveis definidos. Cada solução depende de avaliação de viabilidade, conteúdo e escopo — a conversa começa pela necessidade do seu negócio."
           />
           <section className="section wrap">
+            <figure className="service-poster">
+              <img
+                src="/images/solucoes-geral.webp"
+                width="1200"
+                height="720"
+                loading="lazy"
+                alt="GF10: sites e landing pages, lojas virtuais, sites multilíngues, aplicativos e PWA, sistemas e banco de dados, manutenção e SEO técnico. WhatsApp (41) 99272-1004."
+              />
+            </figure>
             <ServiceList />
           </section>
         </>
@@ -882,8 +892,125 @@ export default function App({ page }: { page: Page }) {
           </div>
         )}
         {body}
+        {["home", "service", "curitiba", "region", "brasil"].includes(
+          page.kind,
+        ) && (
+          <Journey
+            context={
+              page.kind === "region"
+                ? regions.find((r) => r.key === page.key)!.name
+                : page.kind === "curitiba"
+                  ? "Curitiba"
+                  : page.kind === "service"
+                    ? services.find((s) => s.slug === page.key)!.title
+                    : "sua área de atendimento"
+            }
+          />
+        )}
+        {["curitiba", "region", "brasil"].includes(page.kind) && (
+          <LocalArt page={page} />
+        )}
       </main>
       <Footer page={page} />
+      <FloatingActions title={page.title} />
     </>
+  );
+}
+
+function LocalArt({ page }: { page: Page }) {
+  const key = page.kind === "region" ? page.key! : page.kind;
+  const label =
+    page.kind === "region"
+      ? regions.find((r) => r.key === key)!.name
+      : page.kind === "curitiba"
+        ? "Curitiba"
+        : "Brasil";
+  return (
+    <section className="wrap local-art">
+      <a href={whatsapp(`projeto em ${label}`)}>
+        <img
+          src={`/images/local/${key}-250.webp`}
+          width="250"
+          height="250"
+          loading="lazy"
+          alt={`GF10 em ${label}: atendimento remoto. Sites, lojas, aplicações, idiomas, manutenção e SEO. WhatsApp (41) 99272-1004.`}
+        />
+      </a>
+      <div>
+        <p className="eyebrow">Seu projeto / {label}</p>
+        <h2>Vamos entender sua necessidade.</h2>
+        <p>
+          Conte o serviço, a área de atendimento e o objetivo do projeto. A
+          proposta considera o que sua empresa realmente oferece, sem criar
+          filiais ou promessas de resultado.
+        </p>
+        <a href="/solucoes">Conhecer todas as soluções →</a>
+      </div>
+    </section>
+  );
+}
+
+function Journey({ context }: { context: string }) {
+  const steps = [
+    [
+      "Uma pessoa procura",
+      "Ela busca um serviço e uma localidade onde precisa de atendimento.",
+    ],
+    [
+      "Encontra uma página relevante",
+      `Uma página sobre ${context} pode explicar a oferta e a cobertura real da empresa.`,
+    ],
+    [
+      "Entende antes de decidir",
+      "Serviços, condições e provas reais ajudam a avaliar se faz sentido conversar.",
+    ],
+    [
+      "Inicia uma conversa",
+      "O WhatsApp abre com contexto. A pessoa decide se envia a mensagem; o atendimento dá continuidade.",
+    ],
+  ];
+  return (
+    <section className="journey wrap" aria-labelledby="journey-title">
+      <p className="eyebrow">
+        Exemplo ilustrativo / Não é previsão de resultados
+      </p>
+      <h2 id="journey-title">
+        Da busca à conversa.
+        <br />
+        Veja o caminho.
+      </h2>
+      <p className="lead">
+        Um site pode ser encontrado em buscas além da sua base de seguidores e
+        complementa as redes sociais. Aparecer no Google ou em respostas de IA
+        depende de vários fatores; não há garantia de visitas, posições ou
+        vendas.
+      </p>
+      <ol className="journey-steps">
+        {steps.map(([title, text], i) => (
+          <li key={title} aria-current={i === 0 ? "step" : undefined}>
+            <span className="journey-number" aria-hidden="true">
+              0{i + 1}
+            </span>
+            <h3>{title}</h3>
+            <p>{text}</p>
+          </li>
+        ))}
+      </ol>
+      <div className="journey-controls" hidden>
+        <button type="button" id="journey-prev" disabled>
+          ← Voltar
+        </button>
+        <p id="journey-status" role="status" aria-live="polite">
+          Etapa 1 de 4
+        </p>
+        <button type="button" id="journey-next">
+          Avançar →
+        </button>
+      </div>
+      <p className="journey-note">
+        A sequência é uma explicação do processo. Não representa tráfego ou
+        clientes reais.
+      </p>
+    </section>
   );
 }

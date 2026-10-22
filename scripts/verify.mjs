@@ -46,9 +46,26 @@ for (const [path, $] of documents) {
   );
   assert.equal(
     $('script:not([type="application/ld+json"])').length,
-    0,
-    "No client runtime required",
+    1,
+    "Only progressive share enhancement",
   );
+  assert.equal($("script[src]").attr("src"), "/share.js");
+  assert.equal($(".floating-actions").length, 1);
+  assert.equal($("#share-dialog [data-network]").length, 6);
+  if (
+    path === "/criacao-de-sites-curitiba" ||
+    path === "/criacao-de-sites-brasil" ||
+    path.startsWith("/brasil/")
+  ) {
+    assert.equal($(".local-art img").length, 1);
+    const art = $(".local-art img");
+    assert.equal(art.attr("width"), "250");
+    assert.equal(art.attr("height"), "250");
+    assert.equal(art.attr("loading"), "lazy");
+    const dimensions = await sharp("dist" + art.attr("src")).metadata();
+    assert.equal(dimensions.width, 250);
+    assert.equal(dimensions.height, 250);
+  }
   const json = JSON.parse($('script[type="application/ld+json"]').text());
   assert(json["@graph"].length >= 2);
   assert.equal($('a[href^="tel:"],a[href^="mailto:"],form').length, 0);

@@ -35,3 +35,10 @@ Reverter o commit desta alteração ou restaurar deploy Vercel da base acima, se
 - Capturas desktop/mobile e OG inspecionadas. Texto 200% corrigido e aprovado. Relatório reproduzível em `qa/browser-results.json`.
 - Após interrupção de capacidade, sessões e Git foram conferidos: testes terminaram com sucesso, main remoto continuava em `7326513`; nenhum push/deploy novo havia acontecido.
 - Primeiro deploy `5644bfe` confirmado success pela Vercel. Verificação HTTP detectou que sources de redirects precisam de codificação URL na Vercel para espaços/acentos. Ajustado gerador e preview; adicionada validação estrutural para evitar regressão. Conteúdo novo e assets estavam corretos.
+
+## Lote complementar: controles, artes e explicação
+- Base publicada `55b7a21`, remota/produção confirmadas, 78 redirects testados.
+- Compartilhar/WhatsApp globais, seis plataformas, URLs/títulos/OG próprios de cada página, dialog acessível e cópia com fallback honesto. Nenhum envio real nos testes.
+- Sete artes locais 250×250 e uma imagem geral das sete soluções, logo original e número confirmado. WebP; inspeção em tamanho real. Dimensões e lazy loading explícitos.
+- Jornada ilustrativa contextual em home/soluções/locais, etapas manuais e reduced-motion. Explica que site complementa redes; não apresenta simulação como resultados reais.
+- Pedido posterior de diretório cidade > bairro segue pendente. Próximo lote: inventário geográfico oficial das 27 capitais, diretório com filtro e páginas apenas onde houver fatos e conteúdo útil. Não considerar 75 bairros de Curitiba como cobertura nacional completa.

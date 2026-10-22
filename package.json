@@ -12,7 +12,7 @@
     "assets": "node scripts/assets.mjs",
     "preview": "node scripts/serve.mjs",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint App.tsx data scripts",
+    "lint": "eslint App.tsx components data scripts && node --check public/share.js",
     "test": "node scripts/verify.mjs"
   },
   "dependencies": {

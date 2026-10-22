@@ -1,0 +1,15 @@
+{
+  "base": "http://127.0.0.1:4173",
+  "pages": 25,
+  "modal": "focus trap, Escape, close, return focus",
+  "clipboard": "rejection fallback and resolved success tested with mocks only",
+  "viewports": [
+    320,
+    390,
+    1440
+  ],
+  "axe": "zero violations with dialog open",
+  "reducedMotion": "no transition",
+  "externalRequests": 0,
+  "localImages": 7
+}
