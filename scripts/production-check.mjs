@@ -9,14 +9,16 @@ for (let i = 0; i < routes.length; i += 4) {
   await Promise.all(routes.slice(i, i + 4).map(async route => {
     const response = await fetch(base + route.path);
     const $ = load(await response.text());
-    assert.equal(response.status, route.kind === "404" ? 404 : 200, route.path);
+    // Vercel serves the explicitly addressed /404 template with 200.
+    // Unknown URLs must still return 404 (asserted below).
+    assert.equal(response.status, 200, route.path);
     assert.equal($("h1").length, 1);
     assert.equal($('link[rel="canonical"]').attr("href"), base + route.path);
     assert.equal($('meta[property="og:image"]').attr("content"), base + "/og/gf10.jpg");
     assert.equal($('a[href^="tel:"],a[href^="mailto:"],form').length, 0);
     assert.equal($(".floating-actions").length, 1);
     assert.equal($('script[src="/share.js"]').length, 1);
-    if (route.noindex) assert($('meta[name="robots"]').attr("content").includes("noindex"));
+    if (route.noindex || route.kind === "404") assert($('meta[name="robots"]').attr("content").includes("noindex"));
     const img = $(".local-art img").attr("src");
     if (img) assert.equal((await fetch(base + img)).status, 200, img);
     results.push({path:route.path,status:response.status});

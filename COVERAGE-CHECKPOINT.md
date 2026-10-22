@@ -24,3 +24,8 @@ Correspondências documentadas: IBGE Botiatuvinha → slug municipal butiatuvinh
 
 ## Publicação
 Fluxo existente main → Vercel gf10sites → https://www.gf10.com.br. Rollback deste lote: reverter seu commit, preservando c69e98b (floating actions, artes e jornada previamente publicados). Não foram alterados DNS, permissões ou credenciais.
+
+## Evidência pública deste lote
+Implementação: df9089703d85df374ecce71a5ecc8b300048e821, presente em origin/main. Vercel success: https://vercel.com/supremapixs-projects/gf10sites/7Kd1xhVsaCz2Fxm6AiKUmeaatGAe.
+Produção verificada nas 126 rotas em https://www.gf10.com.br: páginas, metadados, artes locais e 50 entradas no sitemap. URLs inexistentes retornam 404. O endereço explícito /404 serve o modelo com 200 na Vercel, com noindex; não equivale à resposta de uma URL desconhecida.
+Controles de compartilhar testados em 126 rotas públicas, sem requisições a redes externas. Foco, Escape, clipboard simulado e reduced-motion passaram. Filtros territoriais e cinco modelos representativos passaram no Axe; 125 páginas de conteúdo testadas localmente em 320/390/1440px sem overflow. Evidências em qa/production-results.json, qa/share-results.json, qa/territory-results.json e qa/browser-results.json.

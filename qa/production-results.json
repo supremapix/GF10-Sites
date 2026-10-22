@@ -1,0 +1,511 @@
+{
+  "checkedAt": "2026-10-22T13:48:28.704Z",
+  "base": "https://www.gf10.com.br",
+  "results": [
+    {
+      "path": "/brasil/capitais/sao-paulo",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/rio-de-janeiro",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/florianopolis",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/porto-alegre",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/brasilia",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/vitoria",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/belo-horizonte",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/goiania",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/salvador",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/aracaju",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/campo-grande",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/cuiaba",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/joao-pessoa",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/recife",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/natal",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/maceio",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/fortaleza",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/teresina",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/sao-luis",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/rio-branco",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/porto-velho",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/manaus",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/boa-vista",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/belem",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/agua-verde",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/macapa",
+      "status": 200
+    },
+    {
+      "path": "/brasil/capitais/palmas",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/abranches",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/alto-boqueirao",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/ahu",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/alto-da-gloria",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/alto-da-rua-xv",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/augusta",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/bairro-alto",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/bacacheri",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/atuba",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/bigorrilho",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/barreirinha",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/boa-vista",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/batel",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/boqueirao",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/bom-retiro",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/cabral",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/butiatuvinha",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/cachoeira",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/cajuru",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/campina-do-siqueira",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/campo-comprido",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/capao-raso",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/capao-da-imbuia",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/campo-de-santana",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/cascatinha",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/centro",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/centro-civico",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/caximba",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/cidade-industrial",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/fanny",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/ganchinho",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/fazendinha",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/cristo-rei",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/guabirotuba",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/hauer",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/guaira",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/hugo-lange",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/jardim-das-americas",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/jardim-social",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/jardim-botanico",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/juveve",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/lindoia",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/mossungue",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/lamenha-pequena",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/merces",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/parolin",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/novo-mundo",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/pilarzinho",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/orleans",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/reboucas",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/pinheirinho",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/portao",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/prado-velho",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/santa-quiteria",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/santa-felicidade",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/santa-candida",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/riviera",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/sao-francisco",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/sao-braz",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/santo-inacio",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/sao-joao",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/seminario",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/sitio-cercado",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/sao-miguel",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/sao-lourenco",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/taruma",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/tingui",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/taboao",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/tatuquara",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/uberaba",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/vila-izabel",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/vista-alegre",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/umbara",
+      "status": 200
+    },
+    {
+      "path": "/brasil/curitiba/bairros/xaxim",
+      "status": 200
+    },
+    {
+      "path": "/criacao-de-sites-brasil",
+      "status": 200
+    },
+    {
+      "path": "/criacao-de-sites-curitiba",
+      "status": 200
+    },
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/brasil/sul",
+      "status": 200
+    },
+    {
+      "path": "/brasil/sudeste",
+      "status": 200
+    },
+    {
+      "path": "/brasil/centro-oeste",
+      "status": 200
+    },
+    {
+      "path": "/brasil/nordeste",
+      "status": 200
+    },
+    {
+      "path": "/solucoes",
+      "status": 200
+    },
+    {
+      "path": "/solucoes/lojas-virtuais",
+      "status": 200
+    },
+    {
+      "path": "/solucoes/sites-e-landing-pages",
+      "status": 200
+    },
+    {
+      "path": "/brasil/norte",
+      "status": 200
+    },
+    {
+      "path": "/solucoes/sistemas-e-banco-de-dados",
+      "status": 200
+    },
+    {
+      "path": "/solucoes/sites-multilingues",
+      "status": 200
+    },
+    {
+      "path": "/solucoes/manutencao-e-modernizacao",
+      "status": 200
+    },
+    {
+      "path": "/solucoes/aplicativos-pwa",
+      "status": 200
+    },
+    {
+      "path": "/guias/preparar-materiais",
+      "status": 200
+    },
+    {
+      "path": "/guias",
+      "status": 200
+    },
+    {
+      "path": "/guias/planejar-site",
+      "status": 200
+    },
+    {
+      "path": "/solucoes/seo-tecnico",
+      "status": 200
+    },
+    {
+      "path": "/guias/medir-e-melhorar",
+      "status": 200
+    },
+    {
+      "path": "/guias/site-loja-ou-app",
+      "status": 200
+    },
+    {
+      "path": "/guias/lancar-outro-idioma",
+      "status": 200
+    },
+    {
+      "path": "/guias/planejar-loja",
+      "status": 200
+    },
+    {
+      "path": "/sitemap",
+      "status": 200
+    },
+    {
+      "path": "/404",
+      "status": 200
+    }
+  ],
+  "sitemapEntries": 50
+}
