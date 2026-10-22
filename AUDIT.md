@@ -34,3 +34,4 @@ Reverter o commit desta alteração ou restaurar deploy Vercel da base acima, se
 - Axe WCAG 2 A/AA + 2.1 AA: nenhuma violação detectada em 9 tipos de página a 390 px. Isso não equivale a certificação ou substituição de auditoria humana.
 - Capturas desktop/mobile e OG inspecionadas. Texto 200% corrigido e aprovado. Relatório reproduzível em `qa/browser-results.json`.
 - Após interrupção de capacidade, sessões e Git foram conferidos: testes terminaram com sucesso, main remoto continuava em `7326513`; nenhum push/deploy novo havia acontecido.
+- Primeiro deploy `5644bfe` confirmado success pela Vercel. Verificação HTTP detectou que sources de redirects precisam de codificação URL na Vercel para espaços/acentos. Ajustado gerador e preview; adicionada validação estrutural para evitar regressão. Conteúdo novo e assets estavam corretos.

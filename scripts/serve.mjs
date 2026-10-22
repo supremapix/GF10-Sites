@@ -22,7 +22,9 @@ createServer(async (req, res) => {
     const path = decodeURIComponent(
       new URL(req.url, "http://localhost").pathname,
     );
-    const redirect = config.redirects.find((r) => r.source === path);
+    const redirect = config.redirects.find(
+      (r) => decodeURIComponent(r.source) === path,
+    );
     if (redirect) {
       res.writeHead(308, { Location: redirect.destination });
       res.end();

@@ -3,6 +3,14 @@ import assert from "node:assert/strict";
 import { load } from "cheerio";
 import sharp from "sharp";
 const routes = JSON.parse(await readFile("dist/routes.json", "utf8"));
+const config = JSON.parse(await readFile("vercel.json", "utf8"));
+assert.equal(config.redirects.length, 78);
+for (const r of config.redirects)
+  assert.equal(
+    r.source,
+    encodeURI(decodeURI(r.source)),
+    "Vercel redirect source must be URL encoded",
+  );
 const documents = new Map();
 for (const r of routes) {
   const html = await readFile(

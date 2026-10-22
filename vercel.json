@@ -10,17 +10,17 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Ahú",
+      "source": "/bairro/Ah%C3%BA",
       "destination": "/criacao-de-sites-curitiba#regional-matriz",
       "permanent": true
     },
     {
-      "source": "/bairro/Alto da Glória",
+      "source": "/bairro/Alto%20da%20Gl%C3%B3ria",
       "destination": "/criacao-de-sites-curitiba#regional-matriz",
       "permanent": true
     },
     {
-      "source": "/bairro/Alto da Rua XV",
+      "source": "/bairro/Alto%20da%20Rua%20XV",
       "destination": "/criacao-de-sites-curitiba#regional-matriz",
       "permanent": true
     },
@@ -35,7 +35,7 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Bom Retiro",
+      "source": "/bairro/Bom%20Retiro",
       "destination": "/criacao-de-sites-curitiba#regional-matriz",
       "permanent": true
     },
@@ -50,52 +50,52 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Centro Cívico",
+      "source": "/bairro/Centro%20C%C3%ADvico",
       "destination": "/criacao-de-sites-curitiba#regional-matriz",
       "permanent": true
     },
     {
-      "source": "/bairro/Cristo Rei",
+      "source": "/bairro/Cristo%20Rei",
       "destination": "/criacao-de-sites-curitiba#regional-matriz",
       "permanent": true
     },
     {
-      "source": "/bairro/Hugo Lange",
+      "source": "/bairro/Hugo%20Lange",
       "destination": "/criacao-de-sites-curitiba#regional-matriz",
       "permanent": true
     },
     {
-      "source": "/bairro/Jardim Botânico",
+      "source": "/bairro/Jardim%20Bot%C3%A2nico",
       "destination": "/criacao-de-sites-curitiba#regional-matriz",
       "permanent": true
     },
     {
-      "source": "/bairro/Jardim Social",
+      "source": "/bairro/Jardim%20Social",
       "destination": "/criacao-de-sites-curitiba#regional-matriz",
       "permanent": true
     },
     {
-      "source": "/bairro/Juvevê",
+      "source": "/bairro/Juvev%C3%AA",
       "destination": "/criacao-de-sites-curitiba#regional-matriz",
       "permanent": true
     },
     {
-      "source": "/bairro/Mercês",
+      "source": "/bairro/Merc%C3%AAs",
       "destination": "/criacao-de-sites-curitiba#regional-matriz",
       "permanent": true
     },
     {
-      "source": "/bairro/Prado Velho",
+      "source": "/bairro/Prado%20Velho",
       "destination": "/criacao-de-sites-curitiba#regional-matriz",
       "permanent": true
     },
     {
-      "source": "/bairro/Rebouças",
+      "source": "/bairro/Rebou%C3%A7as",
       "destination": "/criacao-de-sites-curitiba#regional-matriz",
       "permanent": true
     },
     {
-      "source": "/bairro/São Francisco",
+      "source": "/bairro/S%C3%A3o%20Francisco",
       "destination": "/criacao-de-sites-curitiba#regional-matriz",
       "permanent": true
     },
@@ -115,7 +115,7 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Bairro Alto",
+      "source": "/bairro/Bairro%20Alto",
       "destination": "/criacao-de-sites-curitiba#regional-boa-vista",
       "permanent": true
     },
@@ -125,7 +125,7 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Boa Vista",
+      "source": "/bairro/Boa%20Vista",
       "destination": "/criacao-de-sites-curitiba#regional-boa-vista",
       "permanent": true
     },
@@ -140,17 +140,17 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Santa Cândida",
+      "source": "/bairro/Santa%20C%C3%A2ndida",
       "destination": "/criacao-de-sites-curitiba#regional-boa-vista",
       "permanent": true
     },
     {
-      "source": "/bairro/São Lourenço",
+      "source": "/bairro/S%C3%A3o%20Louren%C3%A7o",
       "destination": "/criacao-de-sites-curitiba#regional-boa-vista",
       "permanent": true
     },
     {
-      "source": "/bairro/Taboão",
+      "source": "/bairro/Tabo%C3%A3o",
       "destination": "/criacao-de-sites-curitiba#regional-boa-vista",
       "permanent": true
     },
@@ -160,12 +160,12 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Alto Boqueirão",
+      "source": "/bairro/Alto%20Boqueir%C3%A3o",
       "destination": "/criacao-de-sites-curitiba#regional-boqueirao",
       "permanent": true
     },
     {
-      "source": "/bairro/Boqueirão",
+      "source": "/bairro/Boqueir%C3%A3o",
       "destination": "/criacao-de-sites-curitiba#regional-boqueirao",
       "permanent": true
     },
@@ -185,7 +185,7 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Capão da Imbuia",
+      "source": "/bairro/Cap%C3%A3o%20da%20Imbuia",
       "destination": "/criacao-de-sites-curitiba#regional-cajuru",
       "permanent": true
     },
@@ -195,12 +195,12 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Jardim das Américas",
+      "source": "/bairro/Jardim%20das%20Am%C3%A9ricas",
       "destination": "/criacao-de-sites-curitiba#regional-cajuru",
       "permanent": true
     },
     {
-      "source": "/bairro/Tarumã",
+      "source": "/bairro/Tarum%C3%A3",
       "destination": "/criacao-de-sites-curitiba#regional-cajuru",
       "permanent": true
     },
@@ -215,7 +215,7 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Cidade Industrial",
+      "source": "/bairro/Cidade%20Industrial",
       "destination": "/criacao-de-sites-curitiba#regional-cic",
       "permanent": true
     },
@@ -225,17 +225,17 @@
       "permanent": true
     },
     {
-      "source": "/bairro/São Miguel",
+      "source": "/bairro/S%C3%A3o%20Miguel",
       "destination": "/criacao-de-sites-curitiba#regional-cic",
       "permanent": true
     },
     {
-      "source": "/bairro/Água Verde",
+      "source": "/bairro/%C3%81gua%20Verde",
       "destination": "/criacao-de-sites-curitiba#regional-fazendinha-portao",
       "permanent": true
     },
     {
-      "source": "/bairro/Campo Comprido",
+      "source": "/bairro/Campo%20Comprido",
       "destination": "/criacao-de-sites-curitiba#regional-fazendinha-portao",
       "permanent": true
     },
@@ -245,7 +245,7 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Guaíra",
+      "source": "/bairro/Gua%C3%ADra",
       "destination": "/criacao-de-sites-curitiba#regional-fazendinha-portao",
       "permanent": true
     },
@@ -255,27 +255,27 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Portão",
+      "source": "/bairro/Port%C3%A3o",
       "destination": "/criacao-de-sites-curitiba#regional-fazendinha-portao",
       "permanent": true
     },
     {
-      "source": "/bairro/Santa Quitéria",
+      "source": "/bairro/Santa%20Quit%C3%A9ria",
       "destination": "/criacao-de-sites-curitiba#regional-fazendinha-portao",
       "permanent": true
     },
     {
-      "source": "/bairro/Seminário",
+      "source": "/bairro/Semin%C3%A1rio",
       "destination": "/criacao-de-sites-curitiba#regional-fazendinha-portao",
       "permanent": true
     },
     {
-      "source": "/bairro/Vila Izabel",
+      "source": "/bairro/Vila%20Izabel",
       "destination": "/criacao-de-sites-curitiba#regional-fazendinha-portao",
       "permanent": true
     },
     {
-      "source": "/bairro/Capão Raso",
+      "source": "/bairro/Cap%C3%A3o%20Raso",
       "destination": "/criacao-de-sites-curitiba#regional-pinheirinho",
       "permanent": true
     },
@@ -285,12 +285,12 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Lindóia",
+      "source": "/bairro/Lind%C3%B3ia",
       "destination": "/criacao-de-sites-curitiba#regional-pinheirinho",
       "permanent": true
     },
     {
-      "source": "/bairro/Novo Mundo",
+      "source": "/bairro/Novo%20Mundo",
       "destination": "/criacao-de-sites-curitiba#regional-pinheirinho",
       "permanent": true
     },
@@ -305,7 +305,7 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Campina do Siqueira",
+      "source": "/bairro/Campina%20do%20Siqueira",
       "destination": "/criacao-de-sites-curitiba#regional-santa-felicidade",
       "permanent": true
     },
@@ -315,12 +315,12 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Lamenha Pequena",
+      "source": "/bairro/Lamenha%20Pequena",
       "destination": "/criacao-de-sites-curitiba#regional-santa-felicidade",
       "permanent": true
     },
     {
-      "source": "/bairro/Mossunguê",
+      "source": "/bairro/Mossungu%C3%AA",
       "destination": "/criacao-de-sites-curitiba#regional-santa-felicidade",
       "permanent": true
     },
@@ -330,27 +330,27 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Santa Felicidade",
+      "source": "/bairro/Santa%20Felicidade",
       "destination": "/criacao-de-sites-curitiba#regional-santa-felicidade",
       "permanent": true
     },
     {
-      "source": "/bairro/Santo Inácio",
+      "source": "/bairro/Santo%20In%C3%A1cio",
       "destination": "/criacao-de-sites-curitiba#regional-santa-felicidade",
       "permanent": true
     },
     {
-      "source": "/bairro/São Braz",
+      "source": "/bairro/S%C3%A3o%20Braz",
       "destination": "/criacao-de-sites-curitiba#regional-santa-felicidade",
       "permanent": true
     },
     {
-      "source": "/bairro/São João",
+      "source": "/bairro/S%C3%A3o%20Jo%C3%A3o",
       "destination": "/criacao-de-sites-curitiba#regional-santa-felicidade",
       "permanent": true
     },
     {
-      "source": "/bairro/Vista Alegre",
+      "source": "/bairro/Vista%20Alegre",
       "destination": "/criacao-de-sites-curitiba#regional-santa-felicidade",
       "permanent": true
     },
@@ -360,17 +360,17 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Sítio Cercado",
+      "source": "/bairro/S%C3%ADtio%20Cercado",
       "destination": "/criacao-de-sites-curitiba#regional-bairro-novo",
       "permanent": true
     },
     {
-      "source": "/bairro/Umbará",
+      "source": "/bairro/Umbar%C3%A1",
       "destination": "/criacao-de-sites-curitiba#regional-bairro-novo",
       "permanent": true
     },
     {
-      "source": "/bairro/Campo de Santana",
+      "source": "/bairro/Campo%20de%20Santana",
       "destination": "/criacao-de-sites-curitiba#regional-tatuquara",
       "permanent": true
     },
@@ -390,7 +390,7 @@
       "permanent": true
     },
     {
-      "source": "/bairro/Alto da XV",
+      "source": "/bairro/Alto%20da%20XV",
       "destination": "/criacao-de-sites-curitiba#regional-matriz",
       "permanent": true
     }

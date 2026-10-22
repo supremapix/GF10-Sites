@@ -19,7 +19,7 @@ try {
       if (!seen.has(n)) {
         seen.add(n);
         redirects.push({
-          source: "/bairro/" + n,
+          source: "/bairro/" + encodeURIComponent(n),
           destination: "/criacao-de-sites-curitiba#regional-" + slug(d.name),
           permanent: true,
         });
@@ -29,7 +29,7 @@ try {
     ["Alto da XV", "matriz"],
   ])
     redirects.push({
-      source: "/bairro/" + n,
+      source: "/bairro/" + encodeURIComponent(n),
       destination: "/criacao-de-sites-curitiba#regional-" + regional,
       permanent: true,
     });
