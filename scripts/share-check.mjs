@@ -17,7 +17,18 @@ await context.route("**/*", (route) => {
   return route.continue();
 });
 const page = await context.newPage();
-const routes = JSON.parse(await readFile("dist/routes.json", "utf8"));
+const allRoutes = JSON.parse(await readFile("dist/routes.json", "utf8"));
+// Exercise every original route and the longest national route per capital.
+// All national HTML, links, metadata and artwork are validated by verify.mjs.
+const samples = new Map();
+for (const r of allRoutes.filter((r) => r.kind === "territory")) {
+  const city = r.path.split("/")[2];
+  if (!samples.has(city) || samples.get(city).path.length < r.path.length)
+    samples.set(city, r);
+}
+const routes = allRoutes
+  .filter((r) => r.kind !== "territory")
+  .concat([...samples.values()]);
 try {
   for (const r of routes) {
     await page.goto(base + r.path);
@@ -159,7 +170,7 @@ try {
     axe: "zero violations with dialog open",
     reducedMotion: "no transition",
     externalRequests: external,
-    localImages: 7,
+    nationalTemplateSamples: samples.size,
   };
   await writeFile("qa/share-results.json", JSON.stringify(result, null, 2));
   console.log(result);

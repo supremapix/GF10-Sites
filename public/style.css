@@ -1158,12 +1158,13 @@ body:has(#share-dialog[open]) {
 @media (max-width: 700px) {
   .floating-actions {
     justify-content: center;
+    flex-wrap: wrap;
     padding-inline: max(12px, env(safe-area-inset-left));
     gap: 8px;
   }
   .floating-actions > a,
   .floating-actions > button {
-    flex: 1;
+    flex: 1 1 8.5rem;
     padding: 12px 8px;
     font-size: 0.8rem;
     gap: 6px;
@@ -1332,3 +1333,6 @@ body:has(#share-dialog[open]) {
 .territory-map figcaption {font-size:0.9rem; margin-top:12px;}
 .section dl dt {font-weight:700; margin-top:16px;}
 .section dl dd {margin:4px 0 12px;}
+.territory-pagination {display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; margin-top:24px;}
+.territory-pagination a {min-height:48px; display:flex; align-items:center; max-width:100%; overflow-wrap:anywhere;}
+.section dd {overflow-wrap:anywhere;}

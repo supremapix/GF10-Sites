@@ -1,0 +1,183 @@
+{
+  "checkedAt": "2026-10-22T14:18:55.268Z",
+  "results": [
+    {
+      "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_de_setores_censitarios__divisoes_intramunicipais/censo_2022/distritos/shp/BR/BR_distritos_CD2022.zip",
+      "status": 200
+    },
+    {
+      "url": "https://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_de_setores_censitarios__divisoes_intramunicipais/censo_2022/bairros/shp/BR/BR_bairros_CD2022.zip",
+      "status": 200
+    },
+    {
+      "url": "https://rbgeo.riobranco.ac.gov.br/server/rest/services/Hosted/bairros_regionais_2025_final/FeatureServer/0",
+      "status": 200
+    },
+    {
+      "url": "https://portalmapa.goiania.go.gov.br/servicogyn/rest/services/MapaServer/Mapa_Basico3/MapServer/313",
+      "status": 200,
+      "headStatus": 405,
+      "method": "GET"
+    },
+    {
+      "url": "https://geo.palmas.to.gov.br/mapas/",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/category/administracoes-regionais",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/agua-quente-ra-xxxv",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/26-de-setembro",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/brazlandia-ra-iv",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/arniqueira-ra-xxxiii",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/aguas-claras-ra-xx",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/arapoanga",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/ceilandia-ra-ix-",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/cruzeiro-ra-xi",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/fercal-ra-xxxi",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/candangolandia-ra-xix",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/gama-ra-ii",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/itapoa-ra-xxviii",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/jardim-botanico-ra-xxvii",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/guara-ra-x",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/lago-sul-ra-xvi",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/lago-norte-ra-xviii",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/paranoa-ra-vii",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/nucleo-bandeirante-ra-viii",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/ponte-alta",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/planaltina-ra-vi",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/plano-piloto-ra-i",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/park-way-ra-xxiv",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/samambaia-ra-xii",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/riacho-fundo-ra-xvii",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/recanto-das-emas-xv",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/riacho-fundo-ii-ra-xxi",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/sia-ra-xxix",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/scia-estrutural-ra-xxv",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/sao-sebastiao-ra-xiv",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/santa-maria-ra-xiii",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/sobradinho-ii-ra-xxvi",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/sobradinho-ra-v",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/sol-nascente-e-por-do-sol-ra-xxxii",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/sudoeste-octogonal-ra-xxii",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/varjao-ra-xxiii",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/taguatinga-ra-iii",
+      "status": 200
+    },
+    {
+      "url": "https://segov.df.gov.br/vicente-pires-ra-xxx",
+      "status": 200
+    },
+    {
+      "url": "https://diieseplan.saoluis.ma.gov.br/?page_id=1099",
+      "status": 200
+    }
+  ]
+}

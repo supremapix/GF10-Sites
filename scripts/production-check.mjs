@@ -20,9 +20,14 @@ for (let i = 0; i < routes.length; i += 4) {
     assert.equal($('script[src="/share.js"]').length, 1);
     if (route.noindex || route.kind === "404") assert($('meta[name="robots"]').attr("content").includes("noindex"));
     const img = $(".local-art img").attr("src");
-    if (img) assert.equal((await fetch(base + img)).status, 200, img);
+    if (img) {
+      const imageResponse = await fetch(base + img);
+      assert.equal(imageResponse.status, 200, img);
+      await imageResponse.arrayBuffer();
+    }
     results.push({path:route.path,status:response.status});
   }));
+  if ((i + 4) % 200 === 0) console.log(`Production routes verified: ${i + 4}/${routes.length}`);
 }
 const sitemap = load(await (await fetch(base + "/sitemap.xml")).text(), {xml:true});
 assert.equal(sitemap("url").length,routes.filter(r=>r.kind!=="404"&&!r.noindex).length);

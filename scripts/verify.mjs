@@ -12,18 +12,24 @@ for (const r of config.redirects)
     "Vercel redirect source must be URL encoded",
   );
 const documents = new Map();
+const anchors = new Map();
 for (const r of routes) {
   const html = await readFile(
     r.path === "/" ? "dist/index.html" : `dist${r.path}.html`,
     "utf8",
   );
-  documents.set(r.path, load(html));
+  documents.set(r.path, html);
+  anchors.set(
+    r.path,
+    new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1])),
+  );
 }
 const titles = new Set(),
   descriptions = new Set();
 let links = 0,
   whatsapps = 0;
-for (const [path, $] of documents) {
+for (const [path, html] of documents) {
+  const $ = load(html);
   assert.equal($("h1").length, 1, `${path}: h1`);
   assert.equal($("main").length, 1);
   assert.equal($("html").attr("lang"), "pt-BR");
@@ -89,9 +95,7 @@ for (const [path, $] of documents) {
     assert(documents.has(url.pathname), `${path}: missing ${href}`);
     if (url.hash)
       assert(
-        documents.get(url.pathname)(
-          `[id="${decodeURIComponent(url.hash.slice(1))}"]`,
-        ).length,
+        anchors.get(url.pathname).has(decodeURIComponent(url.hash.slice(1))),
         `${path}: missing anchor ${href}`,
       );
   }
@@ -109,8 +113,7 @@ assert.equal(
 );
 for (const r of routes.filter((r) => r.noindex)) {
   assert(
-    documents
-      .get(r.path)("meta[name=robots]")
+    load(documents.get(r.path))("meta[name=robots]")
       .attr("content")
       .includes("noindex"),
   );
@@ -139,13 +142,13 @@ const og = await sharp("dist/og/gf10.jpg").metadata();
 assert.equal(og.width, 1200);
 assert.equal(og.height, 630);
 assert.equal(
-  documents.get("/criacao-de-sites-curitiba")(".neighborhoods li").length,
+  load(documents.get("/criacao-de-sites-curitiba"))(".neighborhoods li").length,
   76,
 ); // Campo Comprido is in two regions.
 const cities = [...documents]
-  .filter(([p]) => p.startsWith("/brasil/"))
-  .reduce((sum, [, _$]) => sum + _$(".city-list article").length, 0);
+  .filter(([p]) => routes.some((r) => r.path === p && r.kind === "region"))
+  .reduce((sum, [, html]) => sum + load(html)(".city-list article").length, 0);
 assert.equal(cities, 27);
 console.log(
-  `PASS: ${routes.length} HTML pages, ${links} links, ${whatsapps} contextual WhatsApp links, ${sitemap("url").length} sitemap entries, 27 capitals, 75 unique neighborhoods, OG and favicon dimensions.`,
+  `PASS: ${routes.length} HTML pages, ${links} links, ${whatsapps} contextual WhatsApp links, ${sitemap("url").length} sitemap entries, 27 capitals, ${routes.filter(r=>r.noindex).length} territorial references (75 Curitiba), OG and favicon dimensions.`,
 );

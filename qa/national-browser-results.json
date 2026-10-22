@@ -1,0 +1,16 @@
+{
+  "base": "http://127.0.0.1:4173",
+  "samples": [
+    "/brasil/rio-branco/bairros/estacao-experimental",
+    "/brasil/sao-paulo/distritos/ermelino-matarazzo",
+    "/brasil/goiania/localidades/prq-oeste-industrial-prolongamento",
+    "/brasil/palmas/areas/arso-21-203-s-cond-hor-aldeia-do-sol",
+    "/brasil/brasilia/regioes-administrativas/sol-nascente-e-por-do-sol",
+    "/brasil/sao-luis/bairros/cohatrac-i-ii-iii-iv-primavera-cohatrac"
+  ],
+  "axeViolations": 0,
+  "viewport": 320,
+  "textZoom": "200%",
+  "noGeometryFallback": true,
+  "accentInsensitiveFilter": true
+}

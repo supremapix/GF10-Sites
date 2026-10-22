@@ -1,5 +1,10 @@
 import React from "react";
 import {
+  nationalUnits,
+  NationalTerritoryPage,
+  getNationalUnit,
+} from "./components/NationalTerritory";
+import {
   CapitalDirectory,
   CuritibaDirectory,
   CapitalPage,
@@ -22,6 +27,14 @@ export type Page = {
   noindex?: boolean;
 };
 export const pages: Page[] = [
+  ...nationalUnits.map(({ unit, collection, path }) => ({
+    path,
+    title: `${unit.name}, ${collection.name}: referência territorial | GF10`,
+    description: `Consulte ${unit.name}, em ${collection.name}: ${unit.groupLabel.toLowerCase()} ${unit.group || "não informado"}, fonte e referência territorial para planejar sua área de atendimento.`,
+    kind: "territory",
+    key: unit.key,
+    noindex: true,
+  })),
   ...capitals
     .filter((c) => c.name !== "Curitiba")
     .map((c) => ({
@@ -192,7 +205,11 @@ function Header({ page }: { page: Page }) {
 function Footer({ page }: { page: Page }) {
   return (
     <>
-      <section className="closing wrap" id="contato" aria-label="Contato pelo WhatsApp">
+      <section
+        className="closing wrap"
+        id="contato"
+        aria-label="Contato pelo WhatsApp"
+      >
         <p className="eyebrow">O próximo passo é uma conversa</p>
         <h2>
           O que seu site
@@ -816,6 +833,9 @@ function EditorialPage({
 export default function App({ page }: { page: Page }) {
   let body;
   switch (page.kind) {
+    case "territory":
+      body = <NationalTerritoryPage unitKey={page.key!} />;
+      break;
     case "capital":
       body = <CapitalPage cityKey={page.key!} />;
       break;
@@ -897,7 +917,7 @@ export default function App({ page }: { page: Page }) {
           />
           <ul className="wrap map-list">
             {pages
-              .filter((p) => !["map", "404"].includes(p.kind))
+              .filter((p) => !["map", "404"].includes(p.kind) && !p.noindex)
               .map((p) => (
                 <li key={p.path}>
                   <a href={p.path}>{p.title.replace(" | GF10", "")}</a>
@@ -938,22 +958,30 @@ export default function App({ page }: { page: Page }) {
           "brasil",
           "capital",
           "neighborhood",
+          "territory",
         ].includes(page.kind) && (
           <Journey
             context={
-              page.kind === "region"
-                ? regions.find((r) => r.key === page.key)!.name
-                : page.kind === "curitiba"
-                  ? "Curitiba"
-                  : page.kind === "service"
-                    ? services.find((s) => s.slug === page.key)!.title
-                    : "sua área de atendimento"
+              page.kind === "territory"
+                ? getNationalUnit(page.key!).unit.name
+                : page.kind === "region"
+                  ? regions.find((r) => r.key === page.key)!.name
+                  : page.kind === "curitiba"
+                    ? "Curitiba"
+                    : page.kind === "service"
+                      ? services.find((s) => s.slug === page.key)!.title
+                      : "sua área de atendimento"
             }
           />
         )}
-        {["curitiba", "region", "brasil", "capital", "neighborhood"].includes(
-          page.kind,
-        ) && <LocalArt page={page} />}
+        {[
+          "curitiba",
+          "region",
+          "brasil",
+          "capital",
+          "neighborhood",
+          "territory",
+        ].includes(page.kind) && <LocalArt page={page} />}
       </main>
       <Footer page={page} />
       <FloatingActions title={page.title} />
@@ -962,19 +990,24 @@ export default function App({ page }: { page: Page }) {
 }
 
 function LocalArt({ page }: { page: Page }) {
-  const key = ["region", "capital", "neighborhood"].includes(page.kind)
-    ? page.key!
-    : page.kind;
+  const key =
+    page.kind === "territory"
+      ? `national/${page.key}`
+      : ["region", "capital", "neighborhood"].includes(page.kind)
+        ? page.key!
+        : page.kind;
   const label =
-    page.kind === "capital"
-      ? capitals.find((c) => c.key === key)!.name
-      : page.kind === "neighborhood"
-        ? neighborhoods.find((n) => n.slug === key)!.name
-        : page.kind === "region"
-          ? regions.find((r) => r.key === key)!.name
-          : page.kind === "curitiba"
-            ? "Curitiba"
-            : "Brasil";
+    page.kind === "territory"
+      ? `${getNationalUnit(page.key!).unit.name}, ${getNationalUnit(page.key!).collection.name}`
+      : page.kind === "capital"
+        ? capitals.find((c) => c.key === key)!.name
+        : page.kind === "neighborhood"
+          ? neighborhoods.find((n) => n.slug === key)!.name
+          : page.kind === "region"
+            ? regions.find((r) => r.key === key)!.name
+            : page.kind === "curitiba"
+              ? "Curitiba"
+              : "Brasil";
   return (
     <section className="wrap local-art">
       <a href={whatsapp(`projeto em ${label}`)}>

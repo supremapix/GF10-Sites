@@ -1,4 +1,5 @@
 import React from "react";
+import { NationalDirectory } from "./NationalTerritory";
 import territory from "../data/territory.json";
 import { regions, districts, slug } from "../data/coverage";
 import { whatsapp } from "../data/site";
@@ -17,14 +18,6 @@ export const capitals = regions.flatMap((r) =>
   })),
 );
 export const neighborhoods = territory.curitiba;
-const inventory = territory.cities as Record<
-  string,
-  {
-    name: string;
-    code: string;
-    neighborhoods: { name: string; code: string; district: string }[];
-  }
->;
 export const neighborhoodPath = (key: string) =>
   `/brasil/curitiba/bairros/${key}`;
 
@@ -59,9 +52,9 @@ export function CapitalDirectory() {
     <section className="wrap section territory-directory">
       <h2>Escolha sua capital</h2>
       <p>
-        27 capitais com páginas próprias. Curitiba tem 75 fichas de bairros
-        navegáveis. Nas demais capitais, o inventário territorial indica a
-        cobertura disponível e o que ainda precisa ser conferido.
+        27 capitais com páginas próprias e fichas territoriais navegáveis.
+        Bairros, distritos, quadras e regiões administrativas permanecem
+        identificados por tipo, fonte e limitações da cobertura.
       </p>
       <Filter label="Filtrar capitais" />
       <ul className="territory-list">
@@ -92,7 +85,6 @@ function Filter({ label }: { label: string }) {
 }
 export function CapitalPage({ cityKey }: { cityKey: string }) {
   const city = capitals.find((c) => c.key === cityKey)!;
-  const records = inventory[cityKey];
   return (
     <>
       <section className="wrap section">
@@ -140,47 +132,7 @@ export function CapitalPage({ cityKey }: { cityKey: string }) {
           </a>
         </p>
       </section>
-      <section className="wrap section territory-directory">
-        <h2>Referência territorial de {city.name}</h2>
-        {records ? (
-          <>
-            <p>
-              A malha de bairros do Censo 2022 registra{" "}
-              {records.neighborhoods.length} unidades para o município de{" "}
-              {city.name} (código IBGE {records.code}). É uma referência datada,
-              não uma afirmação de que os limites continuam iguais hoje. Os
-              nomes abaixo ainda não têm fichas individuais publicadas.
-            </p>
-            <Filter label={`Filtrar bairros na base de ${city.name}`} />
-            <ul className="territory-list">
-              {records.neighborhoods.map((n) => (
-                <li key={n.code} data-place={n.name}>
-                  {n.name}
-                </li>
-              ))}
-            </ul>
-            <p data-filter-status role="status" aria-live="polite" />
-          </>
-        ) : (
-          <p>
-            Esta extração da malha de bairros do Censo 2022 não oferece
-            registros para {city.name}. Isso não significa que não existam
-            localidades.{" "}
-            {cityKey === "brasilia"
-              ? "No Distrito Federal, a organização por regiões administrativas exige uma fonte própria; não tratamos essas regiões como bairros."
-              : cityKey === "sao-paulo"
-                ? "Distritos e bairros de São Paulo são recortes diferentes e não serão convertidos automaticamente uns nos outros."
-                : "A divisão municipal será conferida em fonte local antes da publicação de fichas."}{" "}
-            Não publicamos nomes ou links sem essa verificação.
-          </p>
-        )}
-        <p>
-          <a href={territory.source}>
-            Fonte: IBGE, malha de bairros do Censo 2022 (arquivo ZIP)
-          </a>
-          . Conferência da extração: 22/10/2026.
-        </p>
-      </section>
+      <NationalDirectory cityKey={cityKey} />
       <section className="wrap section">
         <h2>O próximo passo depende da sua operação</h2>
         <p>

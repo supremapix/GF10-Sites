@@ -1,3 +1,5 @@
+> Checkpoint histórico do primeiro lote. A cobertura nacional seguinte está detalhada em [NATIONAL-COVERAGE.md](NATIONAL-COVERAGE.md); as pendências abaixo foram substituídas pela extração e navegação das 27 capitais.
+
 # Cobertura territorial — checkpoint de 22/10/2026
 
 ## Lote navegável
