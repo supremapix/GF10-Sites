@@ -1,0 +1,7 @@
+[
+  "320px: 24 routes without horizontal overflow; keyboard skip link works with JS disabled",
+  "390px: 24 routes without horizontal overflow; keyboard skip link works with JS disabled",
+  "1440px: 24 routes without horizontal overflow; keyboard skip link works with JS disabled",
+  "Axe WCAG 2 A/AA + 2.1 AA: zero detected violations across all 9 page templates at 390px.",
+  "200% text at 390px: no horizontal overflow; native disclosures keyboard-operable; unknown route 404; old Portão route 308."
+]
