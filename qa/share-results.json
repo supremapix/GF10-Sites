@@ -1,5 +1,5 @@
 {
-  "base": "http://127.0.0.1:4173",
+  "base": "https://www.gf10.com.br",
   "pages": 152,
   "modal": "focus trap, Escape, close, return focus",
   "clipboard": "rejection fallback and resolved success tested with mocks only",

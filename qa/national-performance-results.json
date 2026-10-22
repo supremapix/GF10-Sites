@@ -1,0 +1,14 @@
+{
+  "largestCapitalHTML": {
+    "path": "/brasil/capitais/goiania",
+    "bytes": 103552
+  },
+  "homeHTML": {
+    "path": "/",
+    "bytes": 19050
+  },
+  "sharedCSSBytes": 23674,
+  "sharedJavaScriptBytes": 5311,
+  "nationalJSONDeliveredToBrowser": false,
+  "rendering": "static HTML; lazy 250x250 local artwork; no remote map SDK"
+}

@@ -53,3 +53,14 @@ HTML estático; fichas úteis como referência geográfica, não anúncios locai
 
 ## Validação
 Verificação estática de todas as rotas, imagens, metadados, links e exclusão de noindex do sitemap. Navegador: todas as rotas anteriores e amostra de maior URL por capital; teste de dados também identifica o nome mais longo por capital para inspeção das artes. Essa amostragem evita repetir milhares de sessões idênticas; não deve ser relatada como teste visual individual de todas as fichas. Publicação e resultado público serão registrados após verificação.
+
+## Publicação e verificação concluídas
+- Implementação: e586d2ce49b001c7bd3b415f621d8f9b541aa1f6, enviada para main e Vercel com sucesso: https://vercel.com/supremapixs-projects/gf10sites/D2NxEBaMxj6JsFSRfA54Eq4zeKcn
+- Produção: https://www.gf10.com.br. As 3.696 rotas foram verificadas por HTTP, com canonical, OG, ações globais e imagens locais existentes. Sitemap com 50 entradas; 3.645 fichas noindex excluídas; URL desconhecida retorna 404 real. O endereço explícito /404 serve o modelo com 200 e noindex na Vercel.
+- Build, TypeScript e lint aprovados; 113.683 links e 18.531 links contextuais de WhatsApp verificados estaticamente.
+- Navegador e compartilhamento: amostra de 152 rotas, incluindo os 26 novos modelos nacionais, em 320/390/1440 px. Compartilhamento também conferido em produção, sem enviar mensagens ou publicar posts.
+- As seis capitais complementares passaram em produção com 320 px, texto a 200%, zero violações Axe, imagens 250x250 carregadas e filtro acessível. Fallback sem geometria testado. Inspeção visual das 26 artes com nomes mais longos realizada; não houve inspeção visual individual de todas as 3.645 fichas.
+- 44 URLs de fontes oficiais consultadas com sucesso. Evidências em qa/production-results.json, qa/national-browser-results.json, qa/share-results.json, qa/national-source-results.json e qa/national-performance-results.json.
+- JavaScript compartilhado: 5.311 bytes; CSS: 23.674 bytes. O snapshot nacional não é enviado ao navegador. Maior página de ficha nacional: 47.834 bytes de HTML; maior diretório de capital: 103.552 bytes. Estes são tamanhos de arquivos, não métricas de Core Web Vitals.
+- Sem bloqueio de publicação. A limitação remanescente é territorial/editorial: as fontes têm datas, categorias e abrangências diferentes. Não afirmar cobertura de todos os nomes populares atuais nem indexação garantida. As fichas só devem tornar-se indexáveis após conteúdo editorial próprio suficiente.
+- Rollback: reverter o commit e586d2c restaura o conteúdo da versão anterior 4025f06, preservando o histórico. Os commits posteriores de evidências não alteram o site.
