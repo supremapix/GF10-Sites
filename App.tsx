@@ -238,6 +238,8 @@ function Footer({ page }: { page: Page }) {
             <a href={whatsapp(page.title)}>WhatsApp {DISPLAY_WHATSAPP}</a>
             <br />
             <a href="/sitemap">Mapa do site</a>
+            <br />
+            <a href="https://profile.google/@canalsupremavideos">Canal Suprema Vídeos no Google</a>
           </div>
         </div>
         <div className="wrap fineprint">
