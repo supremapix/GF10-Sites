@@ -240,6 +240,8 @@ function Footer({ page }: { page: Page }) {
             <a href="/sitemap">Mapa do site</a>
             <br />
             <a href="https://profile.google/@canalsupremavideos">Canal Suprema Vídeos no Google</a>
+            <br />
+            <a href="https://bio.supremamidia.com.br/">Todos os links da Suprema</a>
           </div>
         </div>
         <div className="wrap fineprint">
