@@ -90,11 +90,14 @@ for (const [path, html] of documents) {
   assert.equal($(".local-site-steps").length, local ? 1 : 0, `${path}: practical local guide coverage`);
   if (local) {
     assert.equal($(".local-site-steps ol li").length, 3);
+    assert.equal($(".local-cartoon-steps li img[src^='/images/gf10-guias/local-etapa-']").length, 3);
     assert.equal($(".local-site-steps a").attr("href"), "/guias/ainda-da-tempo-de-criar-um-site");
   }
   if (editorialSlugs.some((slug) => path === `/guias/${slug}`)) {
     assert(json["@graph"].some((item) => item["@type"] === "Article"));
     assert($(".article-body section[id^='etapa-']").length >= 3);
+    assert.equal($(".guide-cartoon img[src^='/images/gf10-guias/']").length, 1);
+    assert.equal($(".guide-cartoon ol li").length, 3);
     assert.equal($('nav[aria-label="Leia também no blog"] a[href="/guias"]').length, 1);
   }
   if (path === "/guias")

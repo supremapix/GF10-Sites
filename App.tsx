@@ -15,6 +15,7 @@ import {
   neighborhoodPath,
 } from "./components/Territory";
 import FloatingActions from "./components/FloatingActions";
+import GuideCartoon from "./components/GuideCartoon";
 import LocalSiteSteps, { type Mode } from "./components/LocalSiteSteps";
 import { startSlug, startRelatedLinks, startingGuides } from "./data/starting-guides";
 import { regions, districts, slug } from "./data/coverage";
@@ -787,6 +788,7 @@ function EditorialPage({
       />
       <div className="wrap article-layout">
         <article className="article-body">
+          {isStartingGuide && <GuideCartoon slug={item.slug} />}
           {item.sections.map((s, i) => (
             <section key={s.title} id={`etapa-${i + 1}`}>
               <h2>{s.title}</h2>

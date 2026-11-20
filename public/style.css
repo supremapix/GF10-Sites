@@ -1337,7 +1337,30 @@ body:has(#share-dialog[open]) {
 .territory-pagination a {min-height:48px; display:flex; align-items:center; max-width:100%; overflow-wrap:anywhere;}
 .section dd {overflow-wrap:anywhere;}
 
-.local-site-steps { max-width: 100%; }
 .local-site-steps > * { max-width: 72ch; }
-.local-site-steps > .steps { margin-block: 24px; }
 .local-site-steps .local-site-tip { border-left: 3px solid currentColor; padding-left: 16px; }
+
+
+/* Numbered visual summaries keep every explanation available as real HTML. */
+.guide-cartoon { margin: 0 0 40px; padding: clamp(14px, 3vw, 24px); border: 1px solid #cad4e7; border-radius: 18px; background: #f5f8ff; }
+.guide-cartoon figcaption { margin-bottom: 14px; }
+.guide-cartoon figcaption .eyebrow { margin-block: 0 6px; }
+.guide-cartoon figcaption h2 { margin: 0; }
+.guide-cartoon > img { width: 100%; height: auto; display: block; }
+.guide-cartoon ol, .local-site-steps > .local-cartoon-steps { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; max-width: none; padding: 0; margin: 12px 0 0; }
+.guide-cartoon li, .local-cartoon-steps li { min-width: 0; border: 1px solid #d5deed; border-radius: 14px; background: #fff; padding: 12px; }
+.guide-cartoon li p, .local-cartoon-steps li p { margin: 7px 0 0; color: #293a58; line-height: 1.5; }
+.cartoon-caption { display: flex; gap: 8px; align-items: center; }
+.cartoon-caption h3, .article-body .cartoon-caption h3 { font-size: clamp(0.92rem, 1.9vw, 1.13rem); line-height: 1.3; margin: 0; }
+.cartoon-number { display: inline-grid; place-items: center; min-width: 26px; min-height: 26px; border-radius: 50%; background: #ffe78b; color: #172742; font-size: 0.85rem; font-weight: 750; }
+.local-site-steps > .local-cartoon-steps { gap: 16px; margin-block: 24px; }
+.local-cartoon-steps li > img { width: 100%; height: auto; aspect-ratio: 268 / 156; object-fit: contain; max-height: 166px; margin-bottom: 10px; display: block; }
+@media (max-width: 650px) {
+  .guide-cartoon ol, .local-site-steps > .local-cartoon-steps { grid-template-columns: 1fr; }
+  .cartoon-caption h3, .article-body .cartoon-caption h3 { font-size: 1rem; }
+}
+
+.guide-cartoon { container-type: inline-size; }
+@container (max-width: 500px) {
+  .guide-cartoon ol { grid-template-columns: 1fr; }
+}

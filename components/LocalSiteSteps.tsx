@@ -102,25 +102,35 @@ export default function LocalSiteSteps({
           <strong>Aplicação local:</strong> {localTip}
         </p>
       )}
-      <ol className="steps">
-        <li>
-          <strong>Defina atendimento e objetivo</strong>
-          <p>{scenario.first}</p>
-        </li>
-        <li>
-          <strong>Organize o conteúdo e o domínio</strong>
-          <p>
-            {scenario.second} Confirme quem administra o domínio e quem mantém o
-            conteúdo atualizado.
-          </p>
-        </li>
-        <li>
-          <strong>Teste, publique e divulgue</strong>
-          <p>
-            {scenario.third} Depois de publicar, atualize os links que você já
-            compartilha e confira se os contatos chegam com contexto.
-          </p>
-        </li>
+      <ol className="local-cartoon-steps" aria-label="Passo a passo ilustrado">
+        {[
+          ["Defina atendimento e objetivo", scenario.first],
+          [
+            "Organize o conteúdo e o domínio",
+            `${scenario.second} Confirme quem administra o domínio e quem mantém o conteúdo atualizado.`,
+          ],
+          [
+            "Teste, publique e divulgue",
+            `${scenario.third} Depois de publicar, atualize os links que você já compartilha e confira se os contatos chegam com contexto.`,
+          ],
+        ].map(([heading, copy], index) => (
+          <li key={heading}>
+            <img
+              src={`/images/gf10-guias/local-etapa-${index + 1}.svg`}
+              width="268"
+              height="156"
+              alt=""
+              loading="lazy"
+            />
+            <div className="cartoon-caption">
+              <span className="cartoon-number" aria-hidden="true">
+                {index + 1}
+              </span>
+              <h3>{heading}</h3>
+            </div>
+            <p>{copy}</p>
+          </li>
+        ))}
       </ol>
       <p>
         <a href={startGuidePath}>
