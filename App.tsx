@@ -15,6 +15,8 @@ import {
   neighborhoodPath,
 } from "./components/Territory";
 import FloatingActions from "./components/FloatingActions";
+import LocalSiteSteps, { type Mode } from "./components/LocalSiteSteps";
+import { startSlug, startRelatedLinks, startingGuides } from "./data/starting-guides";
 import { regions, districts, slug } from "./data/coverage";
 import { services, guides, type Editorial } from "./data/editorial";
 import { whatsapp, DISPLAY_WHATSAPP } from "./data/site";
@@ -96,9 +98,9 @@ export const pages: Page[] = [
   })),
   {
     path: "/guias",
-    title: "Guias para planejar e melhorar seu site | GF10",
+    title: "Blog e guias para criar e melhorar seu site | GF10",
     description:
-      "Passo a passo para preparar um site, escolher sua solução digital, organizar uma loja, publicar em outro idioma e medir interesse.",
+      "Blog da GF10 com passo a passo para criar seu site, escolher orçamento, organizar atendimento local e aproveitar redes sociais.",
     kind: "guides",
   },
   ...guides.map((g) => ({
@@ -193,7 +195,7 @@ function Header({ page }: { page: Page }) {
           </a>
           <a href="/criacao-de-sites-curitiba">Curitiba</a>
           <a href="/criacao-de-sites-brasil">Brasil</a>
-          <a href="/guias">Guias</a>
+          <a href="/guias">Blog e guias</a>
         </nav>
         <a className="header-contact" href={whatsapp(page.title)}>
           WhatsApp <Arrow />
@@ -290,7 +292,7 @@ function GuideList() {
     <div className="guide-list">
       {guides.map((g, i) => (
         <a href={`/guias/${g.slug}`} key={g.slug}>
-          <span className="eyebrow">Guia 0{i + 1} / Passo a passo</span>
+          <span className="eyebrow">Guia {String(i + 1).padStart(2, "0")} / Orientação prática</span>
           <h3>{g.title}</h3>
           <p>{g.description}</p>
           <span className="text-link">
@@ -768,6 +770,7 @@ function EditorialPage({
   item: Editorial;
   isGuide: boolean;
 }) {
+  const isStartingGuide = isGuide && startingGuides.some((g) => g.slug === item.slug);
   const target = (isGuide ? services : guides).find(
     (x) => x.slug === item.related,
   )!;
@@ -798,7 +801,7 @@ function EditorialPage({
             </details>
           </section>
           <p className="byline">
-            Conteúdo editorial GF10 · Revisado em 22 de outubro de 2026.
+            Conteúdo editorial GF10{isStartingGuide ? "." : " · Revisado em 22 de outubro de 2026."}
           </p>
         </article>
         <aside className="article-aside">
@@ -823,6 +826,17 @@ function EditorialPage({
               {target.title} →
             </a>
           </p>
+          {isStartingGuide && (
+            <nav aria-label="Leia também no blog">
+              <a href="/guias">Todos os artigos do blog →</a>
+              {startingGuides.filter((g) => g.slug !== item.slug).map((g) => (
+                <a key={g.slug} href={`/guias/${g.slug}`}>{g.title} →</a>
+              ))}
+              {item.slug === startSlug && startRelatedLinks.map((link) => (
+                <a key={link.path} href={link.path}>{link.label} →</a>
+              ))}
+            </nav>
+          )}
           <p>
             <a href="/criacao-de-sites-curitiba">Atendimento em Curitiba →</a>
           </p>
@@ -885,11 +899,22 @@ export default function App({ page }: { page: Page }) {
       body = (
         <>
           <HeroTitle
-            label="Biblioteca / Guias práticos"
-            title="Antes de investir, entenda o caminho."
-            intro="Roteiros para preparar seu projeto, escolher a solução e acompanhar o que faz diferença. Informação prática para uma conversa comercial melhor."
+            label="Blog da GF10 / Guias práticos"
+            title="Blog e guias para criar seu site."
+            intro="Do primeiro site à evolução do que você já tem. Encontre roteiros para publicar, comparar custos, aproveitar as redes sociais e explicar onde seu negócio atende."
           />
           <section className="section wrap">
+            <h2>Encontre um guia pelo seu objetivo</h2>
+            <nav className="region-links" aria-label="Principais temas do blog">
+              {startingGuides.map((guide) => (
+                <a href={`/guias/${guide.slug}`} key={guide.slug}>
+                  <strong>{guide.title}</strong>
+                  <span>{guide.description}</span>
+                  <Arrow />
+                </a>
+              ))}
+            </nav>
+            <h2>Todos os guias da GF10</h2>
             <GuideList />
           </section>
         </>
@@ -954,6 +979,7 @@ export default function App({ page }: { page: Page }) {
         {body}
         {page.kind === "curitiba" && <CuritibaDirectory />}
         {page.kind === "brasil" && <CapitalDirectory />}
+        <LocalGuideForPage page={page} />
         {[
           "home",
           "service",
@@ -991,6 +1017,36 @@ export default function App({ page }: { page: Page }) {
       <FloatingActions title={page.title} />
     </>
   );
+}
+
+function LocalGuideForPage({ page }: { page: Page }) {
+  if (page.kind === "territory") {
+    const { unit, collection } = getNationalUnit(page.key!);
+    const mode: Mode = collection.category === "bairros" ? "neighborhood"
+      : collection.category === "distritos" ? "district"
+      : collection.category === "localidades" ? "delivery" : "zone";
+    const context = unit.group && unit.group !== unit.name
+      ? `${unit.groupLabel}: ${unit.group}`
+      : `Referência territorial em ${collection.name}`;
+    return <LocalSiteSteps place={`${unit.name}, ${collection.name}`} mode={mode} context={context} />;
+  }
+  if (page.kind === "neighborhood") {
+    const place = neighborhoods.find((n) => n.slug === page.key)!;
+    const regionalNames = districts
+      .filter((d) => d.names.split("|").some((n) => slug(n) === place.slug))
+      .map((d) => d.name);
+    return <LocalSiteSteps place={`${place.name}, Curitiba`} mode="neighborhood" context={regionalNames.join(" / ")} />;
+  }
+  if (page.kind === "capital" || page.kind === "curitiba") {
+    const city = capitals.find((c) => c.key === (page.kind === "curitiba" ? "curitiba" : page.key))!;
+    return <LocalSiteSteps place={city.name} mode="capital" localTip={city.brief} />;
+  }
+  if (page.kind === "region") {
+    const region = regions.find((r) => r.key === page.key)!;
+    return <LocalSiteSteps place={`cidades do ${region.name}`} mode="region" localTip={region.intro} />;
+  }
+  if (page.kind === "brasil") return <LocalSiteSteps place="diferentes cidades do Brasil" mode="national" />;
+  return null;
 }
 
 function LocalArt({ page }: { page: Page }) {

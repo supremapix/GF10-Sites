@@ -11,6 +11,12 @@ for (const r of config.redirects)
     encodeURI(decodeURI(r.source)),
     "Vercel redirect source must be URL encoded",
   );
+const editorialSlugs = [
+  "ainda-da-tempo-de-criar-um-site",
+  "site-proprio-instagram-whatsapp",
+  "quanto-custa-criar-um-site",
+  "site-para-negocio-local",
+];
 const documents = new Map();
 const anchors = new Map();
 for (const r of routes) {
@@ -24,6 +30,7 @@ for (const r of routes) {
     new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1])),
   );
 }
+const routesByPath = new Map(routes.map((r) => [r.path, r]));
 const titles = new Set(),
   descriptions = new Set();
 let links = 0,
@@ -78,6 +85,21 @@ for (const [path, html] of documents) {
   assert(
     !$.html().includes("98700-1004") && !$.html().includes("554192721004"),
   );
+  const route = routesByPath.get(path);
+  const local = ["territory", "capital", "neighborhood", "curitiba", "brasil", "region"].includes(route.kind);
+  assert.equal($(".local-site-steps").length, local ? 1 : 0, `${path}: practical local guide coverage`);
+  if (local) {
+    assert.equal($(".local-site-steps ol li").length, 3);
+    assert.equal($(".local-site-steps a").attr("href"), "/guias/ainda-da-tempo-de-criar-um-site");
+  }
+  if (editorialSlugs.some((slug) => path === `/guias/${slug}`)) {
+    assert(json["@graph"].some((item) => item["@type"] === "Article"));
+    assert($(".article-body section[id^='etapa-']").length >= 3);
+    assert.equal($('nav[aria-label="Leia também no blog"] a[href="/guias"]').length, 1);
+  }
+  if (path === "/guias")
+    for (const slug of editorialSlugs)
+      assert.equal($(`nav[aria-label="Principais temas do blog"] a[href="/guias/${slug}"]`).length, 1);
   if (path === "/404")
     assert($("meta[name=robots]").attr("content").includes("noindex"));
   for (const a of $("a[href]").toArray()) {

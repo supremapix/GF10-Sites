@@ -1,3 +1,5 @@
+import { startingGuides } from "./starting-guides";
+
 export type Section = { title: string; text: string };
 export type Editorial = {
   slug: string;
@@ -222,6 +224,7 @@ export const services: Editorial[] = [
   },
 ];
 export const guides: Editorial[] = [
+  ...startingGuides,
   {
     slug: "planejar-site",
     title: "Como planejar um site que gere conversas úteis",

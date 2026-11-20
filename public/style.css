@@ -1336,3 +1336,8 @@ body:has(#share-dialog[open]) {
 .territory-pagination {display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; margin-top:24px;}
 .territory-pagination a {min-height:48px; display:flex; align-items:center; max-width:100%; overflow-wrap:anywhere;}
 .section dd {overflow-wrap:anywhere;}
+
+.local-site-steps { max-width: 100%; }
+.local-site-steps > * { max-width: 72ch; }
+.local-site-steps > .steps { margin-block: 24px; }
+.local-site-steps .local-site-tip { border-left: 3px solid currentColor; padding-left: 16px; }
