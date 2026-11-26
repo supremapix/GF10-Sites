@@ -88,7 +88,10 @@ for (const [path, html] of documents) {
   const route = routesByPath.get(path);
   const local = ["territory", "capital", "neighborhood", "curitiba", "brasil", "region"].includes(route.kind);
   assert.equal($(".local-site-steps").length, local ? 1 : 0, `${path}: practical local guide coverage`);
+  const servicePath = "/solucoes/monetizacao-de-conteudo-com-ia";
+  assert.equal($("#monetizacao-ia-local").length, local ? 1 : 0, `${path}: monetization local coverage`);
   if (local) {
+    assert.equal($(`section[aria-labelledby="monetizacao-ia-local"] a[href="${servicePath}"]`).length, 1);
     assert.equal($(".local-site-steps ol li").length, 3);
     assert.equal($(".local-cartoon-steps li img[src^='/images/gf10-guias/local-etapa-']").length, 3);
     assert.equal($(".local-site-steps a").attr("href"), "/guias/ainda-da-tempo-de-criar-um-site");
@@ -103,6 +106,13 @@ for (const [path, html] of documents) {
   if (path === "/guias")
     for (const slug of editorialSlugs)
       assert.equal($(`nav[aria-label="Principais temas do blog"] a[href="/guias/${slug}"]`).length, 1);
+  if (path === "/" || path === "/solucoes")
+    assert.equal($(`.service-list a[href="${servicePath}"]`).length, 1);
+  if (path === servicePath) {
+    assert.equal($(".article-body section[id^=etapa-]").length, 5);
+    assert($(".faq").text().includes("não gera pagamento"));
+    assert(!route.noindex);
+  }
   if (path === "/404")
     assert($("meta[name=robots]").attr("content").includes("noindex"));
   for (const a of $("a[href]").toArray()) {
