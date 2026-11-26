@@ -1114,8 +1114,8 @@ function LocalMonetization({ page }: { page: Page }) {
               ? "Curitiba"
               : "Brasil";
   return (
-    <section className="wrap local-art" aria-labelledby="monetizacao-ia-local">
-      <div>
+    <section className="wrap section" aria-labelledby="monetizacao-ia-local">
+      <div className="note">
         <p className="eyebrow">Atendimento remoto / {place}</p>
         <h2 id="monetizacao-ia-local">Monetização de conteúdo com bots e IA</h2>
         <p>
