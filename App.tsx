@@ -803,7 +803,7 @@ function EditorialPage({
             </details>
           </section>
           <p className="byline">
-            Conteúdo editorial GF10{isStartingGuide ? "." : " · Revisado em 22 de outubro de 2026."}
+            Conteúdo editorial GF10{isStartingGuide ? "." : item.slug === "monetizacao-de-conteudo-com-ia" ? " · Publicado em 26 de novembro de 2026." : " · Revisado em 22 de outubro de 2026."}
           </p>
         </article>
         <aside className="article-aside">
@@ -1013,7 +1013,12 @@ export default function App({ page }: { page: Page }) {
           "capital",
           "neighborhood",
           "territory",
-        ].includes(page.kind) && <LocalArt page={page} />}
+        ].includes(page.kind) && (
+          <>
+            <LocalMonetization page={page} />
+            <LocalArt page={page} />
+          </>
+        )}
       </main>
       <Footer page={page} />
       <FloatingActions title={page.title} />
@@ -1090,6 +1095,35 @@ function LocalArt({ page }: { page: Page }) {
           filiais ou promessas de resultado.
         </p>
         <a href="/solucoes">Conhecer todas as soluções →</a>
+      </div>
+    </section>
+  );
+}
+
+function LocalMonetization({ page }: { page: Page }) {
+  const place =
+    page.kind === "territory"
+      ? `${getNationalUnit(page.key!).unit.name}, ${getNationalUnit(page.key!).collection.name}`
+      : page.kind === "capital"
+        ? capitals.find((c) => c.key === page.key)!.name
+        : page.kind === "neighborhood"
+          ? `${neighborhoods.find((n) => n.slug === page.key)!.name}, Curitiba`
+          : page.kind === "region"
+            ? regions.find((r) => r.key === page.key)!.name
+            : page.kind === "curitiba"
+              ? "Curitiba"
+              : "Brasil";
+  return (
+    <section className="wrap section" aria-labelledby="monetizacao-ia-local">
+      <div className="note">
+        <p className="eyebrow">Atendimento remoto / {place}</p>
+        <h2 id="monetizacao-ia-local">Monetização de conteúdo com bots e IA</h2>
+        <p>
+          Seu site tem catálogo, guias ou dados próprios? Avaliamos o que pode ser
+          licenciado e como medir contatos reais vindos de respostas de IA.
+          Acesso de bot, por si só, não gera pagamento.
+        </p>
+        <a href="/solucoes/monetizacao-de-conteudo-com-ia">Como funciona o diagnóstico →</a>
       </div>
     </section>
   );

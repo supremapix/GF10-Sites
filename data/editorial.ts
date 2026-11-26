@@ -222,6 +222,37 @@ export const services: Editorial[] = [
     answer:
       "Não. O trabalho melhora a estrutura e a informação do site; resultados de busca e respostas de IA dependem de sistemas externos e outros fatores.",
   },
+  {
+    "slug": "monetizacao-de-conteudo-com-ia",
+    "title": "Monetização de conteúdo com bots e IA",
+    "description": "Diagnóstico da GF10 para mapear rastreadores, avaliar licenciamento de conteúdo próprio e medir contatos vindos de respostas de IA.",
+    "intro": "Uma visita de bot não é uma venda e não deposita dinheiro na sua conta. A GF10 ajuda empresas e produtores de conteúdo a separar os acessos automatizados das visitas humanas e a descobrir se há uma oportunidade comercial legítima. Projeto com atendimento remoto em Curitiba e no Brasil.",
+    "sections": [
+      {
+        "title": "1. Descubra quem acessa e quais páginas interessam",
+        "text": "Inventariamos as páginas e, quando há acesso aos registros do site, distinguimos rastreadores identificáveis, acessos de origem incerta e visitas de pessoas que chegam por links de assistentes. Rastreamento para busca, acesso solicitado por um usuário e coleta para treinamento são finalidades diferentes. Um nome de bot no registro, sozinho, não comprova sua origem."
+      },
+      {
+        "title": "2. Separe o que você pode licenciar",
+        "text": "Pesquisas originais, bases de dados próprias e materiais técnicos exclusivos podem ser candidatos a licenciamento. Comece por verificar a titularidade dos textos, fotos e dados e separar materiais de terceiros ou com dados pessoais. Havendo interesse real de uma contraparte, negocie uso permitido, período, atualização e remuneração. Sem acordo com um comprador, não há receita de licença."
+      },
+      {
+        "title": "3. Preserve a descoberta e facilite o contato",
+        "text": "Revisamos páginas, links internos e controles de acesso antes de sugerir mudanças que possam afetar a visibilidade. Para ganhar clientes vindos de respostas de IA, facilite a leitura das informações comerciais e deixe o próximo passo claro: consultar o catálogo, pedir orçamento ou falar no WhatsApp. Não alteramos permissões nem ativamos plataformas pagas como parte do diagnóstico."
+      },
+      {
+        "title": "4. Meça resultados sem contar bots como clientes",
+        "text": "Compare acessos automatizados com cliques de referência, pedidos de orçamento e vendas confirmadas. Nem toda ferramenta informa de onde veio uma visita: registre essa limitação. Conte os contratos de licenciamento separadamente das conversões comerciais. Rede de anúncios não é caminho para monetizar impressões artificiais."
+      },
+      {
+        "title": "O que você recebe no diagnóstico",
+        "text": "Uma lista priorizada das páginas e ativos avaliados, uma leitura do que é possível medir e um plano enxuto para testar licenciamento ou melhorar a conversão de visitantes reais. Envie a URL e conte quais conteúdos a sua empresa publica. Não precisamos de senhas para a primeira conversa."
+      }
+    ],
+    "related": "medir-e-melhorar",
+    "question": "O meu site recebe dinheiro sempre que um bot ou uma IA o visita?",
+    "answer": "Não. A visita automatizada não gera pagamento por si só. Receita direta depende de um acordo ou programa disponível e aplicável; ganho indireto depende de pessoas que chegam e se tornam clientes. O diagnóstico não garante receita, citações nem posição nas buscas."
+  },
 ];
 export const guides: Editorial[] = [
   ...startingGuides,
